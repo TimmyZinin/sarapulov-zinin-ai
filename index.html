@@ -163,6 +163,31 @@
     .person .photo{border-right:0;border-bottom:2px solid var(--ink);max-width:100%}
     .prices{box-shadow:6px 6px 0 var(--red)}
   }
+  /* Sticky Telegram CTA bar */
+  .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:9000;background:var(--ink);color:#fff;
+    border-top:3px solid var(--red);transform:translateY(120%);transition:transform .32s cubic-bezier(.22,1,.36,1);
+    box-shadow:0 -10px 30px rgba(10,10,10,.28)}
+  .stickycta.show{transform:translateY(0)}
+  .stickycta .in{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:20px}
+  .stickycta .txt{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+  .stickycta .t1{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:16px;letter-spacing:.01em;line-height:1.1}
+  .stickycta .t1 b{color:var(--red)}
+  .stickycta .t2{font-family:var(--text);font-size:13px;opacity:.72;line-height:1.3}
+  .stickycta .act{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;flex:none;
+    font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:14.5px;letter-spacing:.02em;
+    text-decoration:none;background:var(--red);color:#fff;padding:14px 22px;border:2px solid #fff;
+    box-shadow:4px 4px 0 #fff;transition:transform .12s,box-shadow .12s}
+  .stickycta .act:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #fff}
+  .stickycta .x{flex:none;background:none;border:0;color:#fff;opacity:.55;font-size:22px;line-height:1;
+    cursor:pointer;padding:6px 4px;font-family:var(--mono)}
+  .stickycta .x:hover{opacity:1}
+  @media(max-width:640px){
+    .stickycta .in{padding:11px 14px;gap:12px}
+    .stickycta .t1{font-size:14px}
+    .stickycta .t2{display:none}
+    .stickycta .act{padding:12px 16px;font-size:13px;box-shadow:3px 3px 0 #fff}
+    .stickycta .x{position:absolute;top:6px;right:8px;font-size:18px;padding:2px}
+  }
 </style>
 </head>
 <body>
@@ -209,7 +234,7 @@
         <p style="margin:0 0 16px;font-size:clamp(19px,2vw,26px);line-height:1.35;font-weight:600;max-width:34ch" data-i18n="heroP1">Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.</p>
         <p style="margin:0 0 38px;font-size:clamp(15px,1.4vw,18px);line-height:1.6;max-width:52ch" data-i18n="heroP2">Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.</p>
         <div style="display:flex;gap:18px;flex-wrap:wrap">
-          <a class="btn btn-red" href="https://calendly.com/timzinin" target="_blank" rel="noopener" data-i18n="heroCta1">Расскажите о задаче — разберём бесплатно →</a>
+          <a class="btn btn-red" href="https://t.me/zinin_sarapulov_bot?start=hero" target="_blank" rel="noopener" data-i18n="heroCta1">Расскажите о задаче в Telegram — разберём бесплатно →</a>
           <a class="btn btn-ghost" href="#pricing" data-i18n="heroCta2">Смотрите форматы и цены</a>
         </div>
       </div>
@@ -463,8 +488,8 @@
     <h2 data-i18n="finalH2">Начните с бесплатного разбора</h2>
     <p data-i18n="finalP">Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.</p>
     <div style="display:flex;gap:18px;flex-wrap:wrap;position:relative">
-      <a class="btn btn-ink" href="https://calendly.com/timzinin" target="_blank" rel="noopener" data-i18n="finalCta1">Выберите время в Calendly →</a>
-      <a class="btn btn-white" href="https://t.me/timzinin" target="_blank" rel="noopener" data-i18n="finalCta2">Напишите в Telegram</a>
+      <a class="btn btn-ink" href="https://t.me/zinin_sarapulov_bot?start=final" target="_blank" rel="noopener" data-i18n="finalCta1">Задайте вопрос в Telegram-боте →</a>
+      <a class="btn btn-white" href="https://t.me/timzinin" target="_blank" rel="noopener" data-i18n="finalCta2">Написать Тиму лично</a>
     </div>
   </div>
 </section>
@@ -481,6 +506,17 @@
   </div>
 </footer>
 
+<div class="stickycta" id="stickyCta" aria-hidden="true">
+  <div class="in">
+    <button class="x" id="stickyClose" aria-label="Закрыть">✕</button>
+    <div class="txt">
+      <span class="t1" data-i18n-html="stickyT1">Вопрос по <b>ИИ для бизнеса</b>?</span>
+      <span class="t2" data-i18n="stickyT2">Задайте его в Telegram — ответим без созвонов и презентаций.</span>
+    </div>
+    <a class="act" href="https://t.me/zinin_sarapulov_bot?start=sticky" target="_blank" rel="noopener" data-i18n="stickyBtn">Открыть Telegram →</a>
+  </div>
+</div>
+
 <script>
 (function(){
   var I18N = {
@@ -495,7 +531,7 @@
       heroH1: "ИИ-грамотность<br>для предпринимателей",
       heroP1: "Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.",
       heroP2: "Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.",
-      heroCta1: "Расскажите о задаче — разберём бесплатно →",
+      heroCta1: "Расскажите о задаче в Telegram — разберём бесплатно →",
       heroCta2: "Смотрите форматы и цены",
       certifiedEngineer: "Сертифицированный инженер",
       foundersTrained: "Фаундеров обучено",
@@ -603,8 +639,11 @@
       person2P2: "Помогает бизнесу выбрать формат под задачу — обучение, хакатон или агента под ключ — и остаётся на связи на всём пути внедрения.",
       finalH2: "Начните с бесплатного разбора",
       finalP: "Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.",
-      finalCta1: "Выберите время в Calendly →",
-      finalCta2: "Напишите в Telegram",
+      finalCta1: "Задайте вопрос в Telegram-боте →",
+      finalCta2: "Написать Тиму лично",
+      stickyT1: "Вопрос по <b>ИИ для бизнеса</b>?",
+      stickyT2: "Задайте его в Telegram — ответим без созвонов и презентаций.",
+      stickyBtn: "Открыть Telegram →",
       footerP1: "Семён Сарапулов — партнёр сети Zinin.ai · Россия",
       footerGeo: "сеть регионов RU · BY · TR"
     },
@@ -619,7 +658,7 @@
       heroH1: "AI literacy<br>for entrepreneurs",
       heroP1: "We train you and your team to work with AI, and build turnkey AI agents — for business in Russia and the CIS.",
       heroP2: "Five formats: from personal training for a founder to an agent that takes over the work of an entire department. We work with teams at banks, IT companies, fintechs, developers, and service businesses. We start with a free review of your processes.",
-      heroCta1: "Tell us about your task — free review →",
+      heroCta1: "Tell us about your task in Telegram — free review →",
       heroCta2: "See formats and prices",
       certifiedEngineer: "Certified engineer",
       foundersTrained: "Founders trained",
@@ -727,8 +766,11 @@
       person2P2: "Helps the business choose the right format for the task — training, hackathon, or a turnkey agent — and stays in touch throughout the entire rollout.",
       finalH2: "Start with a free review",
       finalP: "We'll hop on a 30-minute call, look at two or three of your processes, and suggest a format. It's just a conversation, no obligations.",
-      finalCta1: "Pick a time on Calendly →",
-      finalCta2: "Message us on Telegram",
+      finalCta1: "Ask a question in our Telegram bot →",
+      finalCta2: "Message Tim directly",
+      stickyT1: "Question about <b>AI for business</b>?",
+      stickyT2: "Ask it on Telegram — we reply without cold calls or slide decks.",
+      stickyBtn: "Open Telegram →",
       footerP1: "Semyon Sarapulov — Zinin.ai network partner · Russia",
       footerGeo: "network across RU · BY · TR"
     },
@@ -743,7 +785,7 @@
       heroH1: "Girişimciler için<br>yapay zekâ okuryazarlığı",
       heroP1: "Ekibinizi ve sizi yapay zekâ ile çalışmaya eğitiyor, süreçlerinize özel anahtar teslim yapay zekâ ajanları kuruyoruz — Rusya ve BDT'deki işletmeler için.",
       heroP2: "Beş format: kurucunun birebir eğitiminden, bir departmanın işini tamamen üstlenen bir ajana kadar. Bankalar, BT, fintek, gayrimenkul geliştirme ve hizmet şirketlerinin ekipleriyle çalışıyoruz. Süreçlerin ücretsiz incelenmesiyle başlıyoruz.",
-      heroCta1: "Görevinizi anlatın — ücretsiz inceleyelim →",
+      heroCta1: "Görevinizi Telegram'da anlatın — ücretsiz inceleyelim →",
       heroCta2: "Formatları ve fiyatları görün",
       certifiedEngineer: "Sertifikalı mühendis",
       foundersTrained: "Eğitilen kurucu",
@@ -851,8 +893,11 @@
       person2P2: "İşletmenin göreve uygun formatı seçmesine yardımcı oluyor — eğitim, hackathon ya da anahtar teslim ajan — ve uygulamanın tüm sürecinde iletişimde kalıyor.",
       finalH2: "Ücretsiz incelemeyle başlayın",
       finalP: "30 dakika görüşüyor, iki-üç sürecinizi inceliyor ve size bir format öneriyoruz. Bu yalnızca bir sohbet, yükümlülük yok.",
-      finalCta1: "Calendly'den randevu alın →",
-      finalCta2: "Telegram'dan yazın",
+      finalCta1: "Telegram botunda soru sorun →",
+      finalCta2: "Doğrudan Tim'e yazın",
+      stickyT1: "<b>İşletmeler için yapay zekâ</b> hakkında soru mu var?",
+      stickyT2: "Telegram'dan sorun — soğuk aramalar ve sunumlar olmadan yanıtlıyoruz.",
+      stickyBtn: "Telegram'ı aç →",
       footerP1: "Semyon Sarapulov — Zinin.ai ağının ortağı · Rusya",
       footerGeo: "bölge ağı: RU · BY · TR"
     }
@@ -899,6 +944,27 @@
   var saved = null;
   try{ saved = localStorage.getItem('sarapulov_lang'); }catch(e){}
   if(saved && I18N[saved] && saved !== 'ru') applyLang(saved);
+})();
+</script>
+
+<script>
+(function(){
+  var bar = document.getElementById('stickyCta'), close = document.getElementById('stickyClose');
+  if(!bar) return;
+  var dismissed = false;
+  try{ dismissed = sessionStorage.getItem('srp_sticky_closed') === '1'; }catch(e){}
+  function onScroll(){
+    if(dismissed){ bar.classList.remove('show'); return; }
+    var show = (window.pageYOffset || document.documentElement.scrollTop) > 520;
+    bar.classList.toggle('show', show);
+    bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+  }
+  if(close) close.addEventListener('click', function(){
+    dismissed = true; bar.classList.remove('show'); bar.setAttribute('aria-hidden','true');
+    try{ sessionStorage.setItem('srp_sticky_closed','1'); }catch(e){}
+  });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
 
