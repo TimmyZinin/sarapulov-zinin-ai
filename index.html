@@ -63,6 +63,8 @@
   .lang{display:inline-flex;border:2px solid var(--ink)}
   .lang span,.lang a{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;padding:5px 12px;text-decoration:none}
   .lang .on{background:var(--ink);color:#fff}
+  .lang a{cursor:pointer}
+  .lang a:not(.on):hover{background:#eee}
   .partner-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--red);color:#fff;padding:6px 12px;white-space:normal}
   /* metrics */
   .metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);gap:2px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--red)}
@@ -112,7 +114,7 @@
   .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:2px solid var(--ink);background:var(--ink);gap:2px;box-shadow:10px 10px 0 var(--red)}
   .price{background:#fff;padding:30px 24px;display:flex;flex-direction:column;gap:12px}
   .price .pl{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
-  .price .pv{font-family:var(--mono);font-weight:700;font-size:clamp(28px,2.6vw,38px);line-height:1;letter-spacing:-.02em}
+  .price .pv{font-family:var(--mono);font-weight:700;font-size:clamp(28px,2.6vw,38px);line-height:1;letter-spacing:-.02em;overflow-wrap:anywhere}
   .price .pv small{font-size:14px;font-weight:700}
   .price .pm{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--red);font-weight:700}
   .price p{margin:0;font-size:13.5px;line-height:1.55;border-top:2px solid #eee;padding-top:12px}
@@ -168,28 +170,31 @@
 <!-- ===== TICKER ===== -->
 <div class="ticker" data-screen-label="Ticker">
   <div class="track" aria-hidden="true">
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
-    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
-    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="tagline">ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="tagline">ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="tagline">ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span data-i18n="tagline">ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
   </div>
 </div>
 
 <!-- ===== TOPBAR ===== -->
 <div class="topbar" data-screen-label="Topbar">
   <div class="wrap in">
-    <a class="brand" href="#top"><span class="sq"></span>ЗИНИН И ПАРТНЁРЫ</a>
-    <span class="partner-badge">ZININ.AI × САРАПУЛОВ</span>
+    <a class="brand" href="#top"><span class="sq"></span><span data-i18n="brand">ЗИНИН И ПАРТНЁРЫ</span></a>
+    <span class="partner-badge" data-i18n="partnerBadge">ZININ.AI × САРАПУЛОВ</span>
     <div class="meta">
-      <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span>
+      <span data-i18n="tagline">ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span>
+      <span class="lang" role="group" aria-label="Язык / Language / Dil">
+        <a href="#" class="on" data-setlang="ru">RU</a><a href="#" data-setlang="en">EN</a><a href="#" data-setlang="tr">TR</a>
+      </span>
     </div>
   </div>
 </div>
@@ -197,21 +202,21 @@
 <!-- ===== 1 HERO ===== -->
 <section id="top" data-screen-label="Hero">
   <div class="wrap sec" style="position:relative">
-    <div class="tag"><b>01</b><span>·</span><span class="sp">ПАРТНЁРСТВО</span><span class="rule"></span><span style="letter-spacing:.2em;opacity:.6">РОССИЯ И СНГ · КОРПОРАТИВНЫЕ КОМАНДЫ</span></div>
-    <h1 class="h" style="font-size:clamp(30px,6vw,80px);line-height:.98;margin:0 0 34px">ИИ-грамотность<br>для предпринимателей</h1>
+    <div class="tag"><b>01</b><span>·</span><span class="sp" data-i18n="heroTagLabel">ПАРТНЁРСТВО</span><span class="rule"></span><span style="letter-spacing:.2em;opacity:.6" data-i18n="heroTagGeo">РОССИЯ И СНГ · КОРПОРАТИВНЫЕ КОМАНДЫ</span></div>
+    <h1 class="h" style="font-size:clamp(30px,6vw,80px);line-height:.98;margin:0 0 34px" data-i18n-html="heroH1">ИИ-грамотность<br>для предпринимателей</h1>
     <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:start" class="herosplit">
       <div>
-        <p style="margin:0 0 16px;font-size:clamp(19px,2vw,26px);line-height:1.35;font-weight:600;max-width:34ch">Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.</p>
-        <p style="margin:0 0 38px;font-size:clamp(15px,1.4vw,18px);line-height:1.6;max-width:52ch">Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.</p>
+        <p style="margin:0 0 16px;font-size:clamp(19px,2vw,26px);line-height:1.35;font-weight:600;max-width:34ch" data-i18n="heroP1">Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.</p>
+        <p style="margin:0 0 38px;font-size:clamp(15px,1.4vw,18px);line-height:1.6;max-width:52ch" data-i18n="heroP2">Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.</p>
         <div style="display:flex;gap:18px;flex-wrap:wrap">
-          <a class="btn btn-red" href="https://calendly.com/timzinin" target="_blank" rel="noopener">Расскажите о задаче — разберём бесплатно →</a>
-          <a class="btn btn-ghost" href="#pricing">Смотрите форматы и цены</a>
+          <a class="btn btn-red" href="https://calendly.com/timzinin" target="_blank" rel="noopener" data-i18n="heroCta1">Расскажите о задаче — разберём бесплатно →</a>
+          <a class="btn btn-ghost" href="#pricing" data-i18n="heroCta2">Смотрите форматы и цены</a>
         </div>
       </div>
       <div style="border:2px solid var(--ink);min-height:220px;position:relative;overflow:hidden" aria-hidden="true">
         <img src="assets/network.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         <span style="position:absolute;top:-2px;right:-2px;background:var(--red);color:#fff;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;padding:7px 12px;border:2px solid var(--ink)">RU · 2026</span>
-        <span style="position:absolute;left:12px;bottom:10px;background:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--ink)">СЕТЬ ПАРТНЁРОВ</span>
+        <span style="position:absolute;left:12px;bottom:10px;background:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--ink)" data-i18n="partnerNetworkLabel">СЕТЬ ПАРТНЁРОВ</span>
       </div>
     </div>
   </div>
@@ -221,10 +226,10 @@
 <section data-screen-label="Metrics">
   <div class="wrap" style="padding-top:56px;padding-bottom:64px">
     <div class="metrics">
-      <div class="metric"><span class="v">Anthropic</span><span class="k">Сертифицированный инженер</span></div>
-      <div class="metric"><span class="v"><span class="r">36</span></span><span class="k">Фаундеров обучено</span></div>
-      <div class="metric"><span class="v">5 форматов</span><span class="k">От обучения до агента</span></div>
-      <div class="metric"><span class="v">3 страны</span><span class="k">Сеть партнёров</span></div>
+      <div class="metric"><span class="v">Anthropic</span><span class="k" data-i18n="certifiedEngineer">Сертифицированный инженер</span></div>
+      <div class="metric"><span class="v"><span class="r">36</span></span><span class="k" data-i18n="foundersTrained">Фаундеров обучено</span></div>
+      <div class="metric"><span class="v" data-i18n="fiveFormatsV">5 форматов</span><span class="k" data-i18n="fromTrainingToAgent">От обучения до агента</span></div>
+      <div class="metric"><span class="v" data-i18n="threeCountriesV">3 страны</span><span class="k" data-i18n="partnerNetworkLabel">Сеть партнёров</span></div>
     </div>
   </div>
 </section>
@@ -232,97 +237,97 @@
 <!-- ===== 3 SERVICES ===== -->
 <section id="services" data-screen-label="What we do">
   <div class="wrap sec">
-    <div class="tag"><b>02</b><span>·</span><span class="sp">ПЯТЬ ФОРМАТОВ РАБОТЫ</span><span class="rule"></span></div>
-    <h2 class="h">Что делаем</h2>
-    <p class="lede">Каждый формат идёт от вашей реальной задачи и заканчивается работающим результатом, который остаётся у вас. Ниже — что входит в каждый и что вы получаете на выходе.</p>
+    <div class="tag"><b>02</b><span>·</span><span class="sp" data-i18n="svcTagLabel">ПЯТЬ ФОРМАТОВ РАБОТЫ</span><span class="rule"></span></div>
+    <h2 class="h" data-i18n="svcH2">Что делаем</h2>
+    <p class="lede" data-i18n="svcLede">Каждый формат идёт от вашей реальной задачи и заканчивается работающим результатом, который остаётся у вас. Ниже — что входит в каждый и что вы получаете на выходе.</p>
 
     <!-- 01 -->
     <article class="svc">
       <div class="left">
-        <div class="numrow"><span class="num">01</span><span class="cat">Обучение</span></div>
-        <h3>Обучение фаундера</h3>
-        <p class="who"><b>Для кого</b>первое лицо компании, кто хочет освоить ИИ лично и задать стандарт для команды.</p>
+        <div class="numrow"><span class="num">01</span><span class="cat" data-i18n="svc1Cat">Обучение</span></div>
+        <h3 data-i18n="svc1H3">Обучение фаундера</h3>
+        <p class="who" data-i18n-html="svc1Who"><b>Для кого</b>первое лицо компании, кто хочет освоить ИИ лично и задать стандарт для команды.</p>
       </div>
       <div class="right">
         <ul>
-          <li><span class="a">→</span>Разбираем ваши задачи и подбираем инструменты под них</li>
-          <li><span class="a">→</span>4 личных занятия один на один, в вашем темпе</li>
-          <li><span class="a">→</span>Готовые сценарии и шаблоны под вашу работу</li>
-          <li><span class="a">→</span>Поддержка в переписке между занятиями и после программы</li>
+          <li data-i18n-html="svc1Li1"><span class="a">→</span>Разбираем ваши задачи и подбираем инструменты под них</li>
+          <li data-i18n-html="svc1Li2"><span class="a">→</span>4 личных занятия один на один, в вашем темпе</li>
+          <li data-i18n-html="svc1Li3"><span class="a">→</span>Готовые сценарии и шаблоны под вашу работу</li>
+          <li data-i18n-html="svc1Li4"><span class="a">→</span>Поддержка в переписке между занятиями и после программы</li>
         </ul>
-        <p class="res"><b>Результат</b>вы сами ведёте работу с ИИ и понимаете, куда ставить его первым.</p>
+        <p class="res" data-i18n-html="svc1Res"><b>Результат</b>вы сами ведёте работу с ИИ и понимаете, куда ставить его первым.</p>
       </div>
     </article>
 
     <!-- 02 -->
     <article class="svc">
       <div class="left">
-        <div class="numrow"><span class="num">02</span><span class="cat">Обучение</span></div>
-        <h3>Обучение команды</h3>
-        <p class="who"><b>Для кого</b>руководитель, кто хочет поднять на ИИ отдел или команду по единому стандарту.</p>
+        <div class="numrow"><span class="num">02</span><span class="cat" data-i18n="svc1Cat">Обучение</span></div>
+        <h3 data-i18n="svc2H3">Обучение команды</h3>
+        <p class="who" data-i18n-html="svc2Who"><b>Для кого</b>руководитель, кто хочет поднять на ИИ отдел или команду по единому стандарту.</p>
       </div>
       <div class="right">
         <ul>
-          <li><span class="a">→</span>До 4 человек, до 4 занятий в месяц — комбинацию собираете под свой темп</li>
-          <li><span class="a">→</span>Программа под процессы вашего отдела</li>
-          <li><span class="a">→</span>Единые правила, промпты и шаблоны для всей команды</li>
-          <li><span class="a">→</span>Замер результата после внедрения</li>
+          <li data-i18n-html="svc2Li1"><span class="a">→</span>До 4 человек, до 4 занятий в месяц — комбинацию собираете под свой темп</li>
+          <li data-i18n-html="svc2Li2"><span class="a">→</span>Программа под процессы вашего отдела</li>
+          <li data-i18n-html="svc2Li3"><span class="a">→</span>Единые правила, промпты и шаблоны для всей команды</li>
+          <li data-i18n-html="svc2Li4"><span class="a">→</span>Замер результата после внедрения</li>
         </ul>
-        <p class="res"><b>Результат</b>команда работает с ИИ по единому стандарту, а навык остаётся внутри компании.</p>
+        <p class="res" data-i18n-html="svc2Res"><b>Результат</b>команда работает с ИИ по единому стандарту, а навык остаётся внутри компании.</p>
       </div>
     </article>
 
     <!-- 03 flagship -->
     <article class="svc svc--flag">
       <div class="left">
-        <div class="numrow"><span class="num">03</span><span class="cat">Формат-флагман</span></div>
-        <h3>Корпоративный хакатон</h3>
-        <p class="who"><b>Для кого</b>компания, кто хочет за два дня получить рабочие инструменты руками своей команды.</p>
+        <div class="numrow"><span class="num">03</span><span class="cat" data-i18n="svc3Cat">Формат-флагман</span></div>
+        <h3 data-i18n="svc3H3">Корпоративный хакатон</h3>
+        <p class="who" data-i18n-html="svc3Who"><b>Для кого</b>компания, кто хочет за два дня получить рабочие инструменты руками своей команды.</p>
       </div>
       <div class="right">
         <ul>
-          <li><span class="a">→</span><span><b style="color:#fff">День первый — сборка.</b> Команда своими руками собирает ИИ-инструменты под реальные задачи.</span></li>
-          <li><span class="a">→</span><span><b style="color:#fff">День второй — доводка и защита.</b> Доводим инструменты до ума и защищаем перед руководством.</span></li>
-          <li><span class="a">→</span>Наши инженеры рядом оба дня</li>
-          <li><span class="a">→</span>Собранные инструменты остаются в работе компании</li>
+          <li data-i18n-html="svc3Li1"><span class="a">→</span><span><b style="color:#fff">День первый — сборка.</b> Команда своими руками собирает ИИ-инструменты под реальные задачи.</span></li>
+          <li data-i18n-html="svc3Li2"><span class="a">→</span><span><b style="color:#fff">День второй — доводка и защита.</b> Доводим инструменты до ума и защищаем перед руководством.</span></li>
+          <li data-i18n-html="svc3Li3"><span class="a">→</span>Наши инженеры рядом оба дня</li>
+          <li data-i18n-html="svc3Li4"><span class="a">→</span>Собранные инструменты остаются в работе компании</li>
         </ul>
-        <p class="res"><b>Результат</b>несколько работающих инструментов и команда, которая умеет их собирать.</p>
+        <p class="res" data-i18n-html="svc3Res"><b>Результат</b>несколько работающих инструментов и команда, которая умеет их собирать.</p>
       </div>
     </article>
 
     <!-- 04 -->
     <article class="svc">
       <div class="left">
-        <div class="numrow"><span class="num">04</span><span class="cat">Агенты</span></div>
-        <h3>Агент под ключ</h3>
-        <p class="who"><b>Для кого</b>бизнес, кто хочет отдать ИИ-агенту целый участок — продажи, поддержку или маркетинг.</p>
+        <div class="numrow"><span class="num">04</span><span class="cat" data-i18n="svc4Cat">Агенты</span></div>
+        <h3 data-i18n="svc4H3">Агент под ключ</h3>
+        <p class="who" data-i18n-html="svc4Who"><b>Для кого</b>бизнес, кто хочет отдать ИИ-агенту целый участок — продажи, поддержку или маркетинг.</p>
       </div>
       <div class="right">
         <ul>
-          <li><span class="a">→</span><span><b>Продажи:</b> агент находит клиентов, ведёт первичную переписку, назначает встречи</span></li>
-          <li><span class="a">→</span><span><b>Поддержка:</b> агент отвечает клиентам круглосуточно, сложное передаёт людям</span></li>
-          <li><span class="a">→</span><span><b>Маркетинг:</b> агент готовит письма и контент, разбирает отклики</span></li>
-          <li><span class="a">→</span>Интеграция с вашими системами и CRM</li>
+          <li data-i18n-html="svc4Li1"><span class="a">→</span><span><b>Продажи:</b> агент находит клиентов, ведёт первичную переписку, назначает встречи</span></li>
+          <li data-i18n-html="svc4Li2"><span class="a">→</span><span><b>Поддержка:</b> агент отвечает клиентам круглосуточно, сложное передаёт людям</span></li>
+          <li data-i18n-html="svc4Li3"><span class="a">→</span><span><b>Маркетинг:</b> агент готовит письма и контент, разбирает отклики</span></li>
+          <li data-i18n-html="svc4Li4"><span class="a">→</span>Интеграция с вашими системами и CRM</li>
         </ul>
-        <p class="res"><b>Результат</b>участок работает на ИИ, люди занимаются тем, что приносит деньги.</p>
+        <p class="res" data-i18n-html="svc4Res"><b>Результат</b>участок работает на ИИ, люди занимаются тем, что приносит деньги.</p>
       </div>
     </article>
 
     <!-- 05 -->
     <article class="svc">
       <div class="left">
-        <div class="numrow"><span class="num">05</span><span class="cat">Сопровождение</span></div>
-        <h3>Постоянное сопровождение</h3>
-        <p class="who"><b>Для кого</b>компания с запущенным ИИ-контуром, кто хочет развивать его дальше.</p>
+        <div class="numrow"><span class="num">05</span><span class="cat" data-i18n="svc5Cat">Сопровождение</span></div>
+        <h3 data-i18n="svc5H3">Постоянное сопровождение</h3>
+        <p class="who" data-i18n-html="svc5Who"><b>Для кого</b>компания с запущенным ИИ-контуром, кто хочет развивать его дальше.</p>
       </div>
       <div class="right">
         <ul>
-          <li><span class="a">→</span>Развитие ИИ-контура компании</li>
-          <li><span class="a">→</span>Новые агенты по мере роста задач</li>
-          <li><span class="a">→</span>Донастройка под изменения в процессах</li>
-          <li><span class="a">→</span>Обучение новых сотрудников</li>
+          <li data-i18n-html="svc5Li1"><span class="a">→</span>Развитие ИИ-контура компании</li>
+          <li data-i18n-html="svc5Li2"><span class="a">→</span>Новые агенты по мере роста задач</li>
+          <li data-i18n-html="svc5Li3"><span class="a">→</span>Донастройка под изменения в процессах</li>
+          <li data-i18n-html="svc5Li4"><span class="a">→</span>Обучение новых сотрудников</li>
         </ul>
-        <p class="res"><b>Результат</b>ИИ-контур растёт вместе с бизнесом и остаётся в рабочем состоянии.</p>
+        <p class="res" data-i18n-html="svc5Res"><b>Результат</b>ИИ-контур растёт вместе с бизнесом и остаётся в рабочем состоянии.</p>
       </div>
     </article>
   </div>
@@ -331,14 +336,14 @@
 <!-- ===== 4 AUTOMATE ===== -->
 <section data-screen-label="What we automate">
   <div class="wrap sec">
-    <div class="tag"><b>03</b><span>·</span><span class="sp">АГЕНТЫ ПОД ПРОЦЕССЫ</span><span class="rule"></span></div>
-    <h2 class="h">Что автоматизируем</h2>
-    <p class="lede">Четыре участка, где ИИ-агенты забирают рутину быстрее всего. Под каждый собираем агента отдельно, под ваши инструменты и данные.</p>
+    <div class="tag"><b>03</b><span>·</span><span class="sp" data-i18n="automateTagLabel">АГЕНТЫ ПОД ПРОЦЕССЫ</span><span class="rule"></span></div>
+    <h2 class="h" data-i18n="automateH2">Что автоматизируем</h2>
+    <p class="lede" data-i18n="automateLede">Четыре участка, где ИИ-агенты забирают рутину быстрее всего. Под каждый собираем агента отдельно, под ваши инструменты и данные.</p>
     <div class="tiles">
-      <div class="tile"><span class="n">01</span><h3>Отдел продаж</h3><p>Агент квалифицирует входящие обращения, ведёт первичную переписку, назначает встречи и готовит коммерческое предложение — быстрее и без потерь по воронке.</p></div>
-      <div class="tile"><span class="n">02</span><h3>Поддержка клиентов</h3><p>Агент отвечает на частые вопросы круглосуточно, ведёт клиента по базе знаний, а сложные случаи сразу передаёт живым сотрудникам.</p></div>
-      <div class="tile"><span class="n">03</span><h3>Внешние коммуникации и&nbsp;маркетинг</h3><p>Агент готовит персональные письма и контент в голосе компании, разбирает отклики и ведёт первый контакт — число касаний растёт в разы.</p></div>
-      <div class="tile"><span class="n">04</span><h3>Агент под задачу</h3><p>Документы, отчёты, закупки, внутренняя база знаний — под конкретный процесс собираем отдельного агента. Начинаем с разбора процесса.</p></div>
+      <div class="tile"><span class="n">01</span><h3 data-i18n="tile1H3">Отдел продаж</h3><p data-i18n="tile1P">Агент квалифицирует входящие обращения, ведёт первичную переписку, назначает встречи и готовит коммерческое предложение — быстрее и без потерь по воронке.</p></div>
+      <div class="tile"><span class="n">02</span><h3 data-i18n="tile2H3">Поддержка клиентов</h3><p data-i18n="tile2P">Агент отвечает на частые вопросы круглосуточно, ведёт клиента по базе знаний, а сложные случаи сразу передаёт живым сотрудникам.</p></div>
+      <div class="tile"><span class="n">03</span><h3 data-i18n="tile3H3">Внешние коммуникации и&nbsp;маркетинг</h3><p data-i18n="tile3P">Агент готовит персональные письма и контент в голосе компании, разбирает отклики и ведёт первый контакт — число касаний растёт в разы.</p></div>
+      <div class="tile"><span class="n">04</span><h3 data-i18n="tile4H3">Агент под задачу</h3><p data-i18n="tile4P">Документы, отчёты, закупки, внутренняя база знаний — под конкретный процесс собираем отдельного агента. Начинаем с разбора процесса.</p></div>
     </div>
   </div>
 </section>
@@ -346,32 +351,32 @@
 <!-- ===== 5 HOW ===== -->
 <section data-screen-label="How it works">
   <div class="wrap sec">
-    <div class="tag"><b>04</b><span>·</span><span class="sp">ОТ ПЕРВОГО ЗВОНКА ДО РАБОТАЮЩЕГО КОНТУРА</span><span class="rule"></span></div>
-    <h2 class="h" style="margin-bottom:56px">Как проходит работа</h2>
+    <div class="tag"><b>04</b><span>·</span><span class="sp" data-i18n="howTagLabel">ОТ ПЕРВОГО ЗВОНКА ДО РАБОТАЮЩЕГО КОНТУРА</span><span class="rule"></span></div>
+    <h2 class="h" style="margin-bottom:56px" data-i18n="howH2">Как проходит работа</h2>
     <div class="steps">
       <div class="step">
         <span class="sn">1</span>
-        <span class="sl">Шаг 1 · 30 мин · Бесплатно</span>
-        <h3>Бесплатный разбор</h3>
-        <p>Смотрим ваши процессы и находим участок, где ИИ даст результат быстрее всего. Это просто разговор, без обязательств.</p>
+        <span class="sl" data-i18n="step1Sl">Шаг 1 · 30 мин · Бесплатно</span>
+        <h3 data-i18n="step1H3">Бесплатный разбор</h3>
+        <p data-i18n="step1P">Смотрим ваши процессы и находим участок, где ИИ даст результат быстрее всего. Это просто разговор, без обязательств.</p>
       </div>
       <div class="step">
         <span class="sn">2</span>
-        <span class="sl">Шаг 2</span>
-        <h3>Выбираем формат</h3>
-        <p>Фиксируем задачи, сроки и формат: обучение, хакатон, агент под ключ или комбинация. Называем точную цену до старта.</p>
+        <span class="sl" data-i18n="step2Sl">Шаг 2</span>
+        <h3 data-i18n="step2H3">Выбираем формат</h3>
+        <p data-i18n="step2P">Фиксируем задачи, сроки и формат: обучение, хакатон, агент под ключ или комбинация. Называем точную цену до старта.</p>
       </div>
       <div class="step">
         <span class="sn">3</span>
-        <span class="sl">Шаг 3</span>
-        <h3>Занятия и сборка руками</h3>
-        <p>Собираем инструменты на ваших реальных процессах. Тим ведёт занятия и сборку, Семён Сарапулов сопровождает вас от первого разбора до запущенного результата.</p>
+        <span class="sl" data-i18n="step3Sl">Шаг 3</span>
+        <h3 data-i18n="step3H3">Занятия и сборка руками</h3>
+        <p data-i18n="step3P">Собираем инструменты на ваших реальных процессах. Тим ведёт занятия и сборку, Семён Сарапулов сопровождает вас от первого разбора до запущенного результата.</p>
       </div>
       <div class="step">
         <span class="sn">4</span>
-        <span class="sl">Шаг 4</span>
-        <h3>Рабочий контур остаётся у вас</h3>
-        <p>Отдаём работающие инструменты и навык внутрь команды. Дальше вы ведёте ИИ сами, а мы остаёмся на связи.</p>
+        <span class="sl" data-i18n="step4Sl">Шаг 4</span>
+        <h3 data-i18n="step4H3">Рабочий контур остаётся у вас</h3>
+        <p data-i18n="step4P">Отдаём работающие инструменты и навык внутрь команды. Дальше вы ведёте ИИ сами, а мы остаёмся на связи.</p>
       </div>
     </div>
   </div>
@@ -380,69 +385,71 @@
 <!-- ===== 6 PRICING ===== -->
 <section id="pricing" data-screen-label="Pricing">
   <div class="wrap sec">
-    <div class="tag"><b>05</b><span>·</span><span class="sp">ЕДИНЫЙ ПРАЙС СЕТИ</span><span class="rule"></span></div>
-    <h2 class="h">Цены</h2>
-    <p class="lede">Цены фиксированные и одинаковые по всей сети «Зинин и Партнёры» — в любом регионе, у любого партнёра.</p>
+    <div class="tag"><b>05</b><span>·</span><span class="sp" data-i18n="pricingTagLabel">ЕДИНЫЙ ПРАЙС СЕТИ</span><span class="rule"></span></div>
+    <h2 class="h" data-i18n="pricingH2">Цены</h2>
+    <p class="lede" data-i18n="pricingLede">Цены фиксированные и одинаковые по всей сети «Зинин и Партнёры» — в любом регионе, у любого партнёра.</p>
     <div class="prices">
       <div class="price">
-        <span class="pl">Обучение фаундера</span>
-        <span class="pv">200 000 ₽</span>
-        <span class="pm">50 000 ₽ × 4 занятия</span>
-        <p>Персонально, один на один, в вашем темпе.</p>
+        <span class="pl" data-i18n="price1Pl">Обучение фаундера</span>
+        <span class="pv" data-i18n="price1Pv">200 000 ₽</span>
+        <span class="pm" data-i18n="price1Pm">50 000 ₽ × 4 занятия</span>
+        <p data-i18n="price1P">Персонально, один на один, в вашем темпе.</p>
       </div>
       <div class="price">
-        <span class="pl">Обучение команды</span>
-        <span class="pv">от 400 000 ₽<small>/мес</small></span>
-        <span class="pm">до 4 человек · до 4 занятий</span>
-        <p>Программа под процессы отдела, комбинация занятий под ваш темп.</p>
+        <span class="pl" data-i18n="price2Pl">Обучение команды</span>
+        <span class="pv" data-i18n-html="price2Pv">от 400 000 ₽<small>/мес</small></span>
+        <span class="pm" data-i18n="price2Pm">до 4 человек · до 4 занятий</span>
+        <p data-i18n="price2P">Программа под процессы отдела, комбинация занятий под ваш темп.</p>
       </div>
       <div class="price price--flag">
-        <span class="pl" style="color:var(--red)">Корпоративный хакатон</span>
-        <span class="pv">~1 000 000 ₽</span>
-        <span class="pm">2 дня · формат-флагман</span>
-        <p>Команда своими руками делает рабочие ИИ-инструменты за два дня.</p>
+        <span class="pl" style="color:var(--red)" data-i18n="price3Pl">Корпоративный хакатон</span>
+        <span class="pv" data-i18n-html="price3Pv">~1 000 000 ₽</span>
+        <span class="pm" data-i18n="price3Pm">2 дня · формат-флагман</span>
+        <p data-i18n="price3P">Команда своими руками делает рабочие ИИ-инструменты за два дня.</p>
       </div>
       <div class="price">
-        <span class="pl">Агент под ключ</span>
-        <span class="pv">от 90 000 ₽</span>
-        <span class="pm">продажи · поддержка · маркетинг</span>
-        <p>Финальная оценка — по процессам, после бесплатного разбора.</p>
+        <span class="pl" data-i18n="price4Pl">Агент под ключ</span>
+        <span class="pv" data-i18n-html="price4Pv">от 90 000 ₽</span>
+        <span class="pm" data-i18n="price4Pm">продажи · поддержка · маркетинг</span>
+        <p data-i18n="price4P">Финальная оценка — по процессам, после бесплатного разбора.</p>
       </div>
       <div class="price">
-        <span class="pl">Сопровождение</span>
-        <span class="pv">от 500 000 ₽<small>/мес</small></span>
-        <span class="pm">развитие ИИ-контура</span>
-        <p>Новые агенты, донастройка, обучение новых сотрудников.</p>
+        <span class="pl" data-i18n="price5Pl">Сопровождение</span>
+        <span class="pv" data-i18n-html="price5Pv">от 500 000 ₽<small>/мес</small></span>
+        <span class="pm" data-i18n="price5Pm">развитие ИИ-контура</span>
+        <p data-i18n="price5P">Новые агенты, донастройка, обучение новых сотрудников.</p>
       </div>
     </div>
-    <p class="mono" style="font-size:12px;letter-spacing:.05em;opacity:.65;margin:24px 0 0">Оплата в рублях.</p>
+    <p class="mono" style="font-size:12px;letter-spacing:.05em;opacity:.65;margin:24px 0 0" data-i18n="pricingFooterNote">Оплата в рублях.</p>
   </div>
 </section>
 
 <!-- ===== 7 TEAM ===== -->
 <section id="team" data-screen-label="Team">
   <div class="wrap sec">
-    <div class="tag"><b>06</b><span>·</span><span class="sp">КОМАНДА</span><span class="rule"></span></div>
-    <h2 class="h" style="margin-bottom:56px">Кто ведёт</h2>
+    <div class="tag"><b>06</b><span>·</span><span class="sp" data-i18n="teamTagLabel">КОМАНДА</span><span class="rule"></span></div>
+    <h2 class="h" style="margin-bottom:56px" data-i18n="teamH2">Кто ведёт</h2>
     <div class="team">
       <article class="person">
         <div class="photo">
           <img src="assets/tim.jpg" alt="Тим Зинин" style="filter:grayscale(1) contrast(1.08);object-position:center 25%">
         </div>
         <div class="info">
-          <span class="role">Основатель · ИИ-инженер</span>
+          <span class="role" data-i18n="person1Role">Основатель · ИИ-инженер</span>
           <h3>Тим Зинин</h3>
-          <p>Основатель Zinin.ai, сертифицированный инженер Anthropic. Строит ИИ-инструменты для бизнеса и пишет код сам.</p>
-          <p>Ведёт методику и техническую глубину: от первого агента в команде до целого ИИ-контура компании. Лично обучил десятки фаундеров.</p>
+          <p data-i18n="person1P1">Основатель Zinin.ai, сертифицированный инженер Anthropic. Строит ИИ-инструменты для бизнеса и пишет код сам.</p>
+          <p data-i18n="person1P2">Ведёт методику и техническую глубину: от первого агента в команде до целого ИИ-контура компании. Лично обучил десятки фаундеров.</p>
         </div>
       </article>
       <article class="person">
-        <div class="photo mono"><span>С</span></div>
+        <div class="photo">
+          <img src="assets/sarapulov.jpg" alt="Семён Сарапулов — партнёр сети" style="filter:grayscale(1) contrast(1.06);object-position:center 20%">
+        </div>
         <div class="info">
-          <span class="role">Партнёр · Россия</span>
+          <span class="role" data-i18n="person2Role">Партнёр · Россия</span>
           <h3>Семён Сарапулов</h3>
-          <p>Представитель сети «Зинин и Партнёры» в России. Приводит компании в практику и ведёт клиента от первого разбора до запущенного результата.</p>
-          <p>Помогает бизнесу выбрать формат под задачу — обучение, хакатон или агента под ключ — и остаётся на связи на всём пути внедрения.</p>
+          <p data-i18n="person2P1">Представитель сети «Зинин и Партнёры» в России. Приводит компании в практику и ведёт клиента от первого разбора до запущенного результата.</p>
+          <p data-i18n="person2P2">Помогает бизнесу выбрать формат под задачу — обучение, хакатон или агента под ключ — и остаётся на связи на всём пути внедрения.</p>
         </div>
       </article>
     </div>
@@ -453,11 +460,11 @@
 <section class="final" data-screen-label="Final CTA">
   <div class="wrap in" style="position:relative">
     <div class="stripes-red" style="position:absolute;top:0;right:24px;width:180px;height:100%;opacity:.35;pointer-events:none" aria-hidden="true"></div>
-    <h2>Начните с бесплатного разбора</h2>
-    <p>Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.</p>
+    <h2 data-i18n="finalH2">Начните с бесплатного разбора</h2>
+    <p data-i18n="finalP">Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.</p>
     <div style="display:flex;gap:18px;flex-wrap:wrap;position:relative">
-      <a class="btn btn-ink" href="https://calendly.com/timzinin" target="_blank" rel="noopener">Выберите время в Calendly →</a>
-      <a class="btn btn-white" href="https://t.me/timzinin" target="_blank" rel="noopener">Напишите в Telegram</a>
+      <a class="btn btn-ink" href="https://calendly.com/timzinin" target="_blank" rel="noopener" data-i18n="finalCta1">Выберите время в Calendly →</a>
+      <a class="btn btn-white" href="https://t.me/timzinin" target="_blank" rel="noopener" data-i18n="finalCta2">Напишите в Telegram</a>
     </div>
   </div>
 </section>
@@ -465,14 +472,423 @@
 <!-- ===== FOOTER ===== -->
 <footer data-screen-label="Footer">
   <div class="wrap in">
-    <span>Семён Сарапулов — партнёр сети Zinin.ai · Россия</span>
+    <span data-i18n="footerP1">Семён Сарапулов — партнёр сети Zinin.ai · Россия</span>
     <span style="display:flex;gap:26px;flex-wrap:wrap">
       <a href="https://zinin.ai" target="_blank" rel="noopener">zinin.ai</a>
       <a href="https://zinin-shturbin.com" target="_blank" rel="noopener">zinin-shturbin.com</a>
-      <span style="opacity:.6">сеть регионов RU · BY · TR</span>
+      <span style="opacity:.6" data-i18n="footerGeo">сеть регионов RU · BY · TR</span>
     </span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var I18N = {
+    ru: {
+      pageTitle: "Зинин × Сарапулов — обучение ИИ и агенты для компаний России",
+      brand: "ЗИНИН И ПАРТНЁРЫ",
+      tagline: "ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026",
+      partnerBadge: "ZININ.AI × САРАПУЛОВ",
+      partnerNetworkLabel: "СЕТЬ ПАРТНЁРОВ",
+      heroTagLabel: "ПАРТНЁРСТВО",
+      heroTagGeo: "РОССИЯ И СНГ · КОРПОРАТИВНЫЕ КОМАНДЫ",
+      heroH1: "ИИ-грамотность<br>для предпринимателей",
+      heroP1: "Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.",
+      heroP2: "Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.",
+      heroCta1: "Расскажите о задаче — разберём бесплатно →",
+      heroCta2: "Смотрите форматы и цены",
+      certifiedEngineer: "Сертифицированный инженер",
+      foundersTrained: "Фаундеров обучено",
+      fiveFormatsV: "5 форматов",
+      fromTrainingToAgent: "От обучения до агента",
+      threeCountriesV: "3 страны",
+      svcTagLabel: "ПЯТЬ ФОРМАТОВ РАБОТЫ",
+      svcH2: "Что делаем",
+      svcLede: "Каждый формат идёт от вашей реальной задачи и заканчивается работающим результатом, который остаётся у вас. Ниже — что входит в каждый и что вы получаете на выходе.",
+      svc1Cat: "Обучение",
+      svc1H3: "Обучение фаундера",
+      svc1Who: "<b>Для кого</b>первое лицо компании, кто хочет освоить ИИ лично и задать стандарт для команды.",
+      svc1Li1: '<span class="a">→</span>Разбираем ваши задачи и подбираем инструменты под них',
+      svc1Li2: '<span class="a">→</span>4 личных занятия один на один, в вашем темпе',
+      svc1Li3: '<span class="a">→</span>Готовые сценарии и шаблоны под вашу работу',
+      svc1Li4: '<span class="a">→</span>Поддержка в переписке между занятиями и после программы',
+      svc1Res: "<b>Результат</b>вы сами ведёте работу с ИИ и понимаете, куда ставить его первым.",
+      svc2H3: "Обучение команды",
+      svc2Who: "<b>Для кого</b>руководитель, кто хочет поднять на ИИ отдел или команду по единому стандарту.",
+      svc2Li1: '<span class="a">→</span>До 4 человек, до 4 занятий в месяц — комбинацию собираете под свой темп',
+      svc2Li2: '<span class="a">→</span>Программа под процессы вашего отдела',
+      svc2Li3: '<span class="a">→</span>Единые правила, промпты и шаблоны для всей команды',
+      svc2Li4: '<span class="a">→</span>Замер результата после внедрения',
+      svc2Res: "<b>Результат</b>команда работает с ИИ по единому стандарту, а навык остаётся внутри компании.",
+      svc3Cat: "Формат-флагман",
+      svc3H3: "Корпоративный хакатон",
+      svc3Who: "<b>Для кого</b>компания, кто хочет за два дня получить рабочие инструменты руками своей команды.",
+      svc3Li1: '<span class="a">→</span><span><b style="color:#fff">День первый — сборка.</b> Команда своими руками собирает ИИ-инструменты под реальные задачи.</span>',
+      svc3Li2: '<span class="a">→</span><span><b style="color:#fff">День второй — доводка и защита.</b> Доводим инструменты до ума и защищаем перед руководством.</span>',
+      svc3Li3: '<span class="a">→</span>Наши инженеры рядом оба дня',
+      svc3Li4: '<span class="a">→</span>Собранные инструменты остаются в работе компании',
+      svc3Res: "<b>Результат</b>несколько работающих инструментов и команда, которая умеет их собирать.",
+      svc4Cat: "Агенты",
+      svc4H3: "Агент под ключ",
+      svc4Who: "<b>Для кого</b>бизнес, кто хочет отдать ИИ-агенту целый участок — продажи, поддержку или маркетинг.",
+      svc4Li1: '<span class="a">→</span><span><b>Продажи:</b> агент находит клиентов, ведёт первичную переписку, назначает встречи</span>',
+      svc4Li2: '<span class="a">→</span><span><b>Поддержка:</b> агент отвечает клиентам круглосуточно, сложное передаёт людям</span>',
+      svc4Li3: '<span class="a">→</span><span><b>Маркетинг:</b> агент готовит письма и контент, разбирает отклики</span>',
+      svc4Li4: '<span class="a">→</span>Интеграция с вашими системами и CRM',
+      svc4Res: "<b>Результат</b>участок работает на ИИ, люди занимаются тем, что приносит деньги.",
+      svc5Cat: "Сопровождение",
+      svc5H3: "Постоянное сопровождение",
+      svc5Who: "<b>Для кого</b>компания с запущенным ИИ-контуром, кто хочет развивать его дальше.",
+      svc5Li1: '<span class="a">→</span>Развитие ИИ-контура компании',
+      svc5Li2: '<span class="a">→</span>Новые агенты по мере роста задач',
+      svc5Li3: '<span class="a">→</span>Донастройка под изменения в процессах',
+      svc5Li4: '<span class="a">→</span>Обучение новых сотрудников',
+      svc5Res: "<b>Результат</b>ИИ-контур растёт вместе с бизнесом и остаётся в рабочем состоянии.",
+      automateTagLabel: "АГЕНТЫ ПОД ПРОЦЕССЫ",
+      automateH2: "Что автоматизируем",
+      automateLede: "Четыре участка, где ИИ-агенты забирают рутину быстрее всего. Под каждый собираем агента отдельно, под ваши инструменты и данные.",
+      tile1H3: "Отдел продаж",
+      tile1P: "Агент квалифицирует входящие обращения, ведёт первичную переписку, назначает встречи и готовит коммерческое предложение — быстрее и без потерь по воронке.",
+      tile2H3: "Поддержка клиентов",
+      tile2P: "Агент отвечает на частые вопросы круглосуточно, ведёт клиента по базе знаний, а сложные случаи сразу передаёт живым сотрудникам.",
+      tile3H3: "Внешние коммуникации и маркетинг",
+      tile3P: "Агент готовит персональные письма и контент в голосе компании, разбирает отклики и ведёт первый контакт — число касаний растёт в разы.",
+      tile4H3: "Агент под задачу",
+      tile4P: "Документы, отчёты, закупки, внутренняя база знаний — под конкретный процесс собираем отдельного агента. Начинаем с разбора процесса.",
+      howTagLabel: "ОТ ПЕРВОГО ЗВОНКА ДО РАБОТАЮЩЕГО КОНТУРА",
+      howH2: "Как проходит работа",
+      step1Sl: "Шаг 1 · 30 мин · Бесплатно",
+      step1H3: "Бесплатный разбор",
+      step1P: "Смотрим ваши процессы и находим участок, где ИИ даст результат быстрее всего. Это просто разговор, без обязательств.",
+      step2Sl: "Шаг 2",
+      step2H3: "Выбираем формат",
+      step2P: "Фиксируем задачи, сроки и формат: обучение, хакатон, агент под ключ или комбинация. Называем точную цену до старта.",
+      step3Sl: "Шаг 3",
+      step3H3: "Занятия и сборка руками",
+      step3P: "Собираем инструменты на ваших реальных процессах. Тим ведёт занятия и сборку, Семён Сарапулов сопровождает вас от первого разбора до запущенного результата.",
+      step4Sl: "Шаг 4",
+      step4H3: "Рабочий контур остаётся у вас",
+      step4P: "Отдаём работающие инструменты и навык внутрь команды. Дальше вы ведёте ИИ сами, а мы остаёмся на связи.",
+      pricingTagLabel: "ЕДИНЫЙ ПРАЙС СЕТИ",
+      pricingH2: "Цены",
+      pricingLede: "Цены фиксированные и одинаковые по всей сети «Зинин и Партнёры» — в любом регионе, у любого партнёра.",
+      price1Pl: "Обучение фаундера",
+      price1Pv: "200 000 ₽",
+      price1Pm: "50 000 ₽ × 4 занятия",
+      price1P: "Персонально, один на один, в вашем темпе.",
+      price2Pl: "Обучение команды",
+      price2Pv: "от 400 000 ₽<small>/мес</small>",
+      price2Pm: "до 4 человек · до 4 занятий",
+      price2P: "Программа под процессы отдела, комбинация занятий под ваш темп.",
+      price3Pl: "Корпоративный хакатон",
+      price3Pv: "~1 000 000 ₽",
+      price3Pm: "2 дня · формат-флагман",
+      price3P: "Команда своими руками делает рабочие ИИ-инструменты за два дня.",
+      price4Pl: "Агент под ключ",
+      price4Pv: "от 90 000 ₽",
+      price4Pm: "продажи · поддержка · маркетинг",
+      price4P: "Финальная оценка — по процессам, после бесплатного разбора.",
+      price5Pl: "Сопровождение",
+      price5Pv: "от 500 000 ₽<small>/мес</small>",
+      price5Pm: "развитие ИИ-контура",
+      price5P: "Новые агенты, донастройка, обучение новых сотрудников.",
+      pricingFooterNote: "Оплата в рублях.",
+      teamTagLabel: "КОМАНДА",
+      teamH2: "Кто ведёт",
+      person1Role: "Основатель · ИИ-инженер",
+      person1P1: "Основатель Zinin.ai, сертифицированный инженер Anthropic. Строит ИИ-инструменты для бизнеса и пишет код сам.",
+      person1P2: "Ведёт методику и техническую глубину: от первого агента в команде до целого ИИ-контура компании. Лично обучил десятки фаундеров.",
+      person2Role: "Партнёр · Россия",
+      person2P1: "Представитель сети «Зинин и Партнёры» в России. Приводит компании в практику и ведёт клиента от первого разбора до запущенного результата.",
+      person2P2: "Помогает бизнесу выбрать формат под задачу — обучение, хакатон или агента под ключ — и остаётся на связи на всём пути внедрения.",
+      finalH2: "Начните с бесплатного разбора",
+      finalP: "Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.",
+      finalCta1: "Выберите время в Calendly →",
+      finalCta2: "Напишите в Telegram",
+      footerP1: "Семён Сарапулов — партнёр сети Zinin.ai · Россия",
+      footerGeo: "сеть регионов RU · BY · TR"
+    },
+    en: {
+      pageTitle: "Zinin × Sarapulov — AI training and turnkey agents for companies in Russia",
+      brand: "ZININ & PARTNERS",
+      tagline: "AI PRACTICE · RUSSIA & CIS · 2026",
+      partnerBadge: "ZININ.AI × SARAPULOV",
+      partnerNetworkLabel: "PARTNER NETWORK",
+      heroTagLabel: "PARTNERSHIP",
+      heroTagGeo: "RUSSIA & CIS · CORPORATE TEAMS",
+      heroH1: "AI literacy<br>for entrepreneurs",
+      heroP1: "We train you and your team to work with AI, and build turnkey AI agents — for business in Russia and the CIS.",
+      heroP2: "Five formats: from personal training for a founder to an agent that takes over the work of an entire department. We work with teams at banks, IT companies, fintechs, developers, and service businesses. We start with a free review of your processes.",
+      heroCta1: "Tell us about your task — free review →",
+      heroCta2: "See formats and prices",
+      certifiedEngineer: "Certified engineer",
+      foundersTrained: "Founders trained",
+      fiveFormatsV: "5 formats",
+      fromTrainingToAgent: "From training to agents",
+      threeCountriesV: "3 countries",
+      svcTagLabel: "FIVE FORMATS OF WORK",
+      svcH2: "What we do",
+      svcLede: "Every format starts from your real task and ends with a working result that stays with you. Below is what's included in each one and what you walk away with.",
+      svc1Cat: "Training",
+      svc1H3: "Founder training",
+      svc1Who: "<b>Who it's for</b>the company's first person, who wants to master AI personally and set the standard for the team.",
+      svc1Li1: '<span class="a">→</span>We map your tasks and pick the right tools for them',
+      svc1Li2: '<span class="a">→</span>4 one-on-one sessions, at your pace',
+      svc1Li3: '<span class="a">→</span>Ready-made scenarios and templates built for your work',
+      svc1Li4: '<span class="a">→</span>Ongoing support in chat between sessions and after the program',
+      svc1Res: "<b>Result</b>you run your own work with AI and know exactly where to put it first.",
+      svc2H3: "Team training",
+      svc2Who: "<b>Who it's for</b>a manager who wants to bring a department or team up to speed on AI, to one shared standard.",
+      svc2Li1: '<span class="a">→</span>Up to 4 people, up to 4 sessions a month — you set the mix to fit your pace',
+      svc2Li2: '<span class="a">→</span>A program built around your department\'s processes',
+      svc2Li3: '<span class="a">→</span>Shared rules, prompts and templates for the whole team',
+      svc2Li4: '<span class="a">→</span>Results measured after rollout',
+      svc2Res: "<b>Result</b>your team works with AI to one shared standard, and the skill stays inside the company.",
+      svc3Cat: "Flagship format",
+      svc3H3: "Corporate hackathon",
+      svc3Who: "<b>Who it's for</b>a company that wants working tools in two days, built by their own team.",
+      svc3Li1: '<span class="a">→</span><span><b style="color:#fff">Day one — build.</b> The team builds AI tools with their own hands, on real tasks.</span>',
+      svc3Li2: '<span class="a">→</span><span><b style="color:#fff">Day two — refine and pitch.</b> We polish the tools and present them to leadership.</span>',
+      svc3Li3: '<span class="a">→</span>Our engineers are on-site both days',
+      svc3Li4: '<span class="a">→</span>The tools built stay in use at the company',
+      svc3Res: "<b>Result</b>several working tools, plus a team that knows how to build them.",
+      svc4Cat: "Agents",
+      svc4H3: "Turnkey agent",
+      svc4Who: "<b>Who it's for</b>a business that wants to hand an entire area — sales, support, or marketing — to an AI agent.",
+      svc4Li1: '<span class="a">→</span><span><b>Sales:</b> the agent finds leads, runs the first round of outreach, and books meetings</span>',
+      svc4Li2: '<span class="a">→</span><span><b>Support:</b> the agent answers customers around the clock, and hands off the complex cases to people</span>',
+      svc4Li3: '<span class="a">→</span><span><b>Marketing:</b> the agent drafts emails and content and works through the replies</span>',
+      svc4Li4: '<span class="a">→</span>Integration with your systems and CRM',
+      svc4Res: "<b>Result</b>the area runs on AI, and your people do the work that actually makes money.",
+      svc5Cat: "Support",
+      svc5H3: "Ongoing support",
+      svc5Who: "<b>Who it's for</b>a company with an AI system already running, who wants to keep developing it.",
+      svc5Li1: '<span class="a">→</span>Ongoing development of your AI system',
+      svc5Li2: '<span class="a">→</span>New agents as your tasks grow',
+      svc5Li3: '<span class="a">→</span>Adjustments as your processes change',
+      svc5Li4: '<span class="a">→</span>Training for new hires',
+      svc5Res: "<b>Result</b>your AI system grows with the business and stays in working order.",
+      automateTagLabel: "AGENTS FOR YOUR PROCESSES",
+      automateH2: "What we automate",
+      automateLede: "Four areas where AI agents take the routine off your plate the fastest. We build each agent separately, around your own tools and data.",
+      tile1H3: "Sales",
+      tile1P: "The agent qualifies inbound leads, runs the first round of outreach, books meetings, and drafts the proposal — faster, with nothing lost along the funnel.",
+      tile2H3: "Customer support",
+      tile2P: "The agent answers common questions around the clock, walks the customer through your knowledge base, and hands off the hard cases to your people straight away.",
+      tile3H3: "Outreach and marketing",
+      tile3P: "The agent drafts personal emails and content in your company's voice, works through the replies, and handles first contact — the number of touches goes up several times over.",
+      tile4H3: "Agent for your task",
+      tile4P: "Documents, reports, procurement, an internal knowledge base — we build a dedicated agent for a specific process. We start by reviewing the process itself.",
+      howTagLabel: "FROM THE FIRST CALL TO A WORKING SYSTEM",
+      howH2: "How the work goes",
+      step1Sl: "Step 1 · 30 min · Free",
+      step1H3: "Free review",
+      step1P: "We look at your processes and find the area where AI will pay off fastest. It's just a conversation, no obligations.",
+      step2Sl: "Step 2",
+      step2H3: "We pick the format",
+      step2P: "We nail down the tasks, timeline and format: training, hackathon, turnkey agent, or a combination. You get an exact price before we start.",
+      step3Sl: "Step 3",
+      step3H3: "Sessions and hands-on building",
+      step3P: "We build the tools on your real processes. Tim runs the sessions and the build; Semyon Sarapulov supports you from the first review to a working result.",
+      step4Sl: "Step 4",
+      step4H3: "The working system stays with you",
+      step4P: "We hand over the working tools and the skill to your team. From there you run AI yourselves, and we stay in touch.",
+      pricingTagLabel: "ONE PRICE LIST ACROSS THE NETWORK",
+      pricingH2: "Pricing",
+      pricingLede: "Prices are fixed and the same across the entire «Zinin & Partners» network — in any region, with any partner.",
+      price1Pl: "Founder training",
+      price1Pv: "$2,700",
+      price1Pm: "$675 × 4 sessions",
+      price1P: "One-on-one, personal, at your pace.",
+      price2Pl: "Team training",
+      price2Pv: "from $5,500<small>/mo</small>",
+      price2Pm: "up to 4 people · up to 4 sessions",
+      price2P: "A program built for your department's processes, with the session mix set to your pace.",
+      price3Pl: "Corporate hackathon",
+      price3Pv: "~$11,000",
+      price3Pm: "2 days · flagship format",
+      price3P: "Your team builds working AI tools with their own hands in two days.",
+      price4Pl: "Turnkey agent",
+      price4Pv: "from $1,000",
+      price4Pm: "sales · support · marketing",
+      price4P: "Final quote depends on your processes, set after the free review.",
+      price5Pl: "Ongoing support",
+      price5Pv: "from $5,000<small>/mo</small>",
+      price5Pm: "AI stack development",
+      price5P: "New agents, fine-tuning, training for new hires.",
+      pricingFooterNote: "Payment in USD.",
+      teamTagLabel: "TEAM",
+      teamH2: "Who runs it",
+      person1Role: "Founder · AI engineer",
+      person1P1: "Founder of Zinin.ai, an Anthropic-certified engineer. Builds AI tools for business and writes the code himself.",
+      person1P2: "Leads the methodology and the technical depth: from a team's first agent to a company's entire AI system. Has personally trained dozens of founders.",
+      person2Role: "Partner · Russia",
+      person2P1: "Representative of the «Zinin & Partners» network in Russia. Brings companies into the practice and guides the client from the first review to a working result.",
+      person2P2: "Helps the business choose the right format for the task — training, hackathon, or a turnkey agent — and stays in touch throughout the entire rollout.",
+      finalH2: "Start with a free review",
+      finalP: "We'll hop on a 30-minute call, look at two or three of your processes, and suggest a format. It's just a conversation, no obligations.",
+      finalCta1: "Pick a time on Calendly →",
+      finalCta2: "Message us on Telegram",
+      footerP1: "Semyon Sarapulov — Zinin.ai network partner · Russia",
+      footerGeo: "network across RU · BY · TR"
+    },
+    tr: {
+      pageTitle: "Zinin × Sarapulov — Rusya'daki şirketler için yapay zekâ eğitimi ve ajanlar",
+      brand: "ZİNİN VE ORTAKLARI",
+      tagline: "YZ PRATİĞİ · RUSYA VE BDT · 2026",
+      partnerBadge: "ZININ.AI × SARAPULOV",
+      partnerNetworkLabel: "ORTAKLIK AĞI",
+      heroTagLabel: "İŞ ORTAKLIĞI",
+      heroTagGeo: "RUSYA VE BDT · KURUMSAL EKİPLER",
+      heroH1: "Girişimciler için<br>yapay zekâ okuryazarlığı",
+      heroP1: "Ekibinizi ve sizi yapay zekâ ile çalışmaya eğitiyor, süreçlerinize özel anahtar teslim yapay zekâ ajanları kuruyoruz — Rusya ve BDT'deki işletmeler için.",
+      heroP2: "Beş format: kurucunun birebir eğitiminden, bir departmanın işini tamamen üstlenen bir ajana kadar. Bankalar, BT, fintek, gayrimenkul geliştirme ve hizmet şirketlerinin ekipleriyle çalışıyoruz. Süreçlerin ücretsiz incelenmesiyle başlıyoruz.",
+      heroCta1: "Görevinizi anlatın — ücretsiz inceleyelim →",
+      heroCta2: "Formatları ve fiyatları görün",
+      certifiedEngineer: "Sertifikalı mühendis",
+      foundersTrained: "Eğitilen kurucu",
+      fiveFormatsV: "5 format",
+      fromTrainingToAgent: "Eğitimden ajana",
+      threeCountriesV: "3 ülke",
+      svcTagLabel: "BEŞ ÇALIŞMA FORMATI",
+      svcH2: "Ne yapıyoruz",
+      svcLede: "Her format sizin gerçek görevinizden başlar ve sizde kalan çalışan bir sonuçla biter. Aşağıda her formatın içeriği ve elde edeceğiniz sonuç var.",
+      svc1Cat: "Eğitim",
+      svc1H3: "Kurucu eğitimi",
+      svc1Who: "<b>Kimler için</b>yapay zekâyı birebir öğrenmek ve ekibe standardı belirlemek isteyen şirketin ilk ismi.",
+      svc1Li1: '<span class="a">→</span>Görevlerinizi inceliyor, size uygun araçları seçiyoruz',
+      svc1Li2: '<span class="a">→</span>Birebir 4 ders, sizin temponuzda',
+      svc1Li3: '<span class="a">→</span>İşinize özel hazır senaryolar ve şablonlar',
+      svc1Li4: '<span class="a">→</span>Dersler arasında ve program sonrası yazışmayla destek',
+      svc1Res: "<b>Sonuç</b>yapay zekâ ile çalışmayı kendiniz yürütüyor ve onu ilk nereye koyacağınızı biliyorsunuz.",
+      svc2H3: "Ekip eğitimi",
+      svc2Who: "<b>Kimler için</b>bir departmanı ya da ekibi tek standartta yapay zekâya taşımak isteyen yönetici.",
+      svc2Li1: '<span class="a">→</span>En fazla 4 kişi, ayda en fazla 4 ders — kombinasyonu kendi temponuza göre kurarsınız',
+      svc2Li2: '<span class="a">→</span>Departmanınızın süreçlerine özel program',
+      svc2Li3: '<span class="a">→</span>Tüm ekip için ortak kurallar, promptlar ve şablonlar',
+      svc2Li4: '<span class="a">→</span>İçselleştirme sonrası sonuç ölçümü',
+      svc2Res: "<b>Sonuç</b>ekip yapay zekâ ile tek standartta çalışıyor, beceri şirket içinde kalıyor.",
+      svc3Cat: "Amiral format",
+      svc3H3: "Kurumsal hackathon",
+      svc3Who: "<b>Kimler için</b>iki günde kendi ekibinin elleriyle çalışan araçlar elde etmek isteyen şirket.",
+      svc3Li1: '<span class="a">→</span><span><b style="color:#fff">Birinci gün — kurulum.</b> Ekip kendi elleriyle gerçek görevlere yapay zekâ araçları kuruyor.</span>',
+      svc3Li2: '<span class="a">→</span><span><b style="color:#fff">İkinci gün — ince ayar ve sunum.</b> Araçları olgunlaştırıyor ve yönetime sunuyoruz.</span>',
+      svc3Li3: '<span class="a">→</span>Mühendislerimiz iki gün boyunca yanınızda',
+      svc3Li4: '<span class="a">→</span>Kurulan araçlar şirketin işinde kalıyor',
+      svc3Res: "<b>Sonuç</b>birkaç çalışan araç ve onları kurmayı bilen bir ekip.",
+      svc4Cat: "Ajanlar",
+      svc4H3: "Anahtar teslim ajan",
+      svc4Who: "<b>Kimler için</b>bütün bir alanı yapay zekâ ajanına devretmek isteyen işletme — satış, destek ya da pazarlama.",
+      svc4Li1: '<span class="a">→</span><span><b>Satış:</b> ajan müşteri buluyor, ilk yazışmayı yürütüyor, görüşme ayarlıyor</span>',
+      svc4Li2: '<span class="a">→</span><span><b>Destek:</b> ajan müşterilere 7/24 yanıt veriyor, karmaşığı insanlara aktarıyor</span>',
+      svc4Li3: '<span class="a">→</span><span><b>Pazarlama:</b> ajan mesaj ve içerik hazırlıyor, gelen yanıtları değerlendiriyor</span>',
+      svc4Li4: '<span class="a">→</span>Sistemlerinizle ve CRM ile entegrasyon',
+      svc4Res: "<b>Sonuç</b>alan yapay zekâ ile çalışıyor, insanlar para getiren işle ilgileniyor.",
+      svc5Cat: "Sürekli destek",
+      svc5H3: "Sürekli destek",
+      svc5Who: "<b>Kimler için</b>çalışan bir yapay zekâ altyapısı olan ve onu geliştirmek isteyen şirket.",
+      svc5Li1: '<span class="a">→</span>Şirketin yapay zekâ altyapısının geliştirilmesi',
+      svc5Li2: '<span class="a">→</span>Görevler büyüdükçe yeni ajanlar',
+      svc5Li3: '<span class="a">→</span>Süreçlerdeki değişikliklere göre ince ayar',
+      svc5Li4: '<span class="a">→</span>Yeni çalışanların eğitimi',
+      svc5Res: "<b>Sonuç</b>yapay zekâ altyapısı işletmeyle birlikte büyüyor ve çalışır durumda kalıyor.",
+      automateTagLabel: "SÜREÇLERE ÖZEL AJANLAR",
+      automateH2: "Neleri otomatikleştiriyoruz",
+      automateLede: "Yapay zekâ ajanlarının rutini en hızlı devraldığı dört alan. Her biri için ajanı ayrı ayrı, kendi araçlarınıza ve verilerinize göre kuruyoruz.",
+      tile1H3: "Satış ekibi",
+      tile1P: "Ajan gelen talepleri değerlendiriyor, ilk yazışmayı yürütüyor, görüşme ayarlıyor ve teklif hazırlıyor — daha hızlı, huni boyunca kayıpsız.",
+      tile2H3: "Müşteri desteği",
+      tile2P: "Ajan sık soruları 7/24 yanıtlıyor, müşteriyi bilgi tabanı üzerinden yönlendiriyor, karmaşık durumları canlı çalışanlara aktarıyor.",
+      tile3H3: "Dış iletişim ve pazarlama",
+      tile3P: "Ajan şirketin sesiyle kişiye özel mesaj ve içerik hazırlıyor, yanıtları değerlendiriyor ve ilk teması yürütüyor — temas sayısı kat kat artıyor.",
+      tile4H3: "Göreve özel ajan",
+      tile4P: "Belgeler, raporlar, satın alma, iç bilgi tabanı — her sürece ayrı bir ajan kuruyoruz. Süreci incelemekle başlıyoruz.",
+      howTagLabel: "İLK GÖRÜŞMEDEN ÇALIŞAN ALTYAPIYA",
+      howH2: "Süreç nasıl işliyor",
+      step1Sl: "Adım 1 · 30 dk · Ücretsiz",
+      step1H3: "Ücretsiz inceleme",
+      step1P: "Süreçlerinize bakıyor, yapay zekânın en hızlı sonuç vereceği alanı buluyoruz. Bu yalnızca bir sohbet, yükümlülük yok.",
+      step2Sl: "Adım 2",
+      step2H3: "Formatı seçiyoruz",
+      step2P: "Görevleri, süreleri ve formatı netleştiriyoruz: eğitim, hackathon, anahtar teslim ajan ya da kombinasyon. Kesin fiyatı başlamadan önce söylüyoruz.",
+      step3Sl: "Adım 3",
+      step3H3: "Dersler ve elle kurulum",
+      step3P: "Araçları gerçek süreçleriniz üzerinde kuruyoruz. Tim dersleri ve kurulumu yürütüyor, Semyon Sarapulov ilk incelemeden çalışan sonuca kadar size eşlik ediyor.",
+      step4Sl: "Adım 4",
+      step4H3: "Çalışan altyapı sizde kalıyor",
+      step4P: "Çalışan araçları ve beceriyi ekibin içine bırakıyoruz. Sonrasında yapay zekâyı kendiniz yürütüyorsunuz, biz iletişimde kalıyoruz.",
+      pricingTagLabel: "AĞIN ORTAK FİYAT LİSTESİ",
+      pricingH2: "Fiyatlandırma",
+      pricingLede: "Fiyatlar sabittir ve «Zinin ve Ortakları» ağının tamamında aynıdır — her bölgede, her ortakta.",
+      price1Pl: "Kurucu eğitimi",
+      price1Pv: "₺110.000",
+      price1Pm: "₺27.500 × 4 seans",
+      price1P: "Birebir, sizin temponuzda.",
+      price2Pl: "Ekip eğitimi",
+      price2Pv: "₺225.000<small>/ay</small>",
+      price2Pm: "4 kişiye kadar · 4 seansa kadar",
+      price2P: "Departman süreçlerine özel program, temponuza göre ders kombinasyonu.",
+      price3Pl: "Kurumsal hackathon",
+      price3Pv: "~<wbr>₺450.000",
+      price3Pm: "2 gün · amiral format",
+      price3P: "Ekip iki günde kendi elleriyle çalışan yapay zekâ araçları üretiyor.",
+      price4Pl: "Anahtar teslim ajan",
+      price4Pv: "₺41.000<wbr>'dan",
+      price4Pm: "satış · destek · pazarlama",
+      price4P: "Nihai fiyat süreçlere göre, ücretsiz incelemeden sonra belirlenir.",
+      price5Pl: "Sürekli destek",
+      price5Pv: "₺205.000<small>/ay</small>",
+      price5Pm: "YZ altyapısı geliştirme",
+      price5P: "Yeni ajanlar, ince ayar, yeni çalışanların eğitimi.",
+      pricingFooterNote: "Ödeme TL cinsinden.",
+      teamTagLabel: "EKİP",
+      teamH2: "Kim yürütüyor",
+      person1Role: "Kurucu · Yapay zekâ mühendisi",
+      person1P1: "Zinin.ai'nin kurucusu, Anthropic sertifikalı mühendis. İşletmeler için yapay zekâ araçları kuruyor ve kodu kendisi yazıyor.",
+      person1P2: "Metodolojiyi ve teknik derinliği yürütüyor: ekipteki ilk ajandan şirketin tüm yapay zekâ altyapısına kadar. Onlarca kurucuyu bizzat eğitti.",
+      person2Role: "Ortak · Rusya",
+      person2P1: "Rusya'da «Zinin ve Ortakları» ağının temsilcisi. Şirketleri pratiğe dahil ediyor ve müşteriyi ilk incelemeden çalışan sonuca kadar yönlendiriyor.",
+      person2P2: "İşletmenin göreve uygun formatı seçmesine yardımcı oluyor — eğitim, hackathon ya da anahtar teslim ajan — ve uygulamanın tüm sürecinde iletişimde kalıyor.",
+      finalH2: "Ücretsiz incelemeyle başlayın",
+      finalP: "30 dakika görüşüyor, iki-üç sürecinizi inceliyor ve size bir format öneriyoruz. Bu yalnızca bir sohbet, yükümlülük yok.",
+      finalCta1: "Calendly'den randevu alın →",
+      finalCta2: "Telegram'dan yazın",
+      footerP1: "Semyon Sarapulov — Zinin.ai ağının ortağı · Rusya",
+      footerGeo: "bölge ağı: RU · BY · TR"
+    }
+  };
+
+  function applyLang(lang){
+    var dict = I18N[lang];
+    if(!dict) return;
+    document.documentElement.setAttribute('lang', lang);
+    if(dict.pageTitle) document.title = dict.pageTitle;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang [data-setlang]').forEach(function(a){
+      a.classList.toggle('on', a.getAttribute('data-setlang') === lang);
+    });
+    try{ localStorage.setItem('sarapulov_lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang [data-setlang]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      applyLang(this.getAttribute('data-setlang'));
+    });
+  });
+
+  var saved = null;
+  try{ saved = localStorage.getItem('sarapulov_lang'); }catch(e){}
+  if(saved && I18N[saved] && saved !== 'ru') applyLang(saved);
+})();
+</script>
 
 </body>
 </html>
