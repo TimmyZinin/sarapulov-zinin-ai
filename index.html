@@ -112,10 +112,10 @@
   .step p{margin:0;font-size:14px;line-height:1.6}
   /* pricing */
   .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:2px solid var(--ink);background:var(--ink);gap:2px;box-shadow:10px 10px 0 var(--red)}
-  .price{background:#fff;padding:30px 24px;display:flex;flex-direction:column;gap:12px}
+  .price{background:#fff;padding:28px 22px;display:flex;flex-direction:column;gap:10px}
   .price .pl{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
-  .price .pv{font-family:var(--mono);font-weight:700;font-size:clamp(28px,2.6vw,38px);line-height:1;letter-spacing:-.02em;overflow-wrap:anywhere}
-  .price .pv small{font-size:14px;font-weight:700}
+  .price .pv{font-family:var(--mono);font-weight:700;font-size:clamp(20px,1.95vw,25px);line-height:1.12;letter-spacing:-.03em;font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all;hyphens:none}
+  .price .pv small{font-size:12px;font-weight:700;opacity:.7;white-space:nowrap}
   .price .pm{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--red);font-weight:700}
   .price p{margin:0;font-size:13.5px;line-height:1.55;border-top:2px solid #eee;padding-top:12px}
   .price--flag{background:var(--ink);color:#fff}
@@ -875,7 +875,19 @@
       a.classList.toggle('on', a.getAttribute('data-setlang') === lang);
     });
     try{ localStorage.setItem('sarapulov_lang', lang); }catch(e){}
+    protectPrices();
   }
+
+  function protectPrices(){
+    document.querySelectorAll('.price .pv').forEach(function(el){
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n, nodes = [];
+      while(n = w.nextNode()) nodes.push(n);
+      nodes.forEach(function(t){
+        t.nodeValue = t.nodeValue.replace(/(\d)\s(?=\d)/g, '$1 ').replace(/(\d)\s(?=[₽$₺])/g, '$1 ');
+      });
+    });
+  }
+  protectPrices();
 
   document.querySelectorAll('.lang [data-setlang]').forEach(function(a){
     a.addEventListener('click', function(e){
