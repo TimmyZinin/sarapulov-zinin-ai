@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Зинин × Сарапулов — обучение ИИ и агенты для компаний России</title>
+<meta name="description" content="Партнёрство Zinin.ai и Семёна Сарапулова: обучаем работать с ИИ и собираем ИИ-агентов под ключ для бизнеса в России. Обучение, хакатоны и внедрение.">
+<meta property="og:title" content="Зинин × Сарапулов — ИИ-практика для компаний России">
+<meta property="og:description" content="Обучение работе с ИИ и агенты под ключ для бизнеса — партнёрство Zinin.ai и Семёна Сарапулова, Россия.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sarapulov.zinin.ai/">
+<meta property="og:image" content="https://sarapulov.zinin.ai/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sarapulov.zinin.ai/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E10A17'/%3E%3Ctext x='16' y='23' font-family='Arial, Helvetica, sans-serif' font-size='20' font-weight='900' fill='%23ffffff' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A; --red:#E10A17; --paper:#fff;
+    --mono:'Space Mono',monospace; --head:'Archivo Black',sans-serif; --text:'Space Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--red);color:#fff}
+  a{color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+  .h{font-family:var(--head);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);overflow-wrap:break-word}
+  .mono{font-family:var(--mono)}
+  .sp{letter-spacing:.3em;text-transform:uppercase}
+  .tag{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;gap:16px;margin-bottom:26px}
+  .tag b{color:var(--red);font-weight:700;letter-spacing:0}
+  .tag .rule{flex:1;height:2px;background:var(--ink);min-width:24px}
+  h2.h{font-size:clamp(32px,4.8vw,62px);line-height:1;margin:0 0 20px}
+  .lede{font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:64ch;margin:0 0 52px}
+  section{border-bottom:2px solid var(--ink)}
+  .sec{padding-top:clamp(64px,7vw,110px);padding-bottom:clamp(64px,7vw,110px)}
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:15px;letter-spacing:.02em;text-decoration:none;padding:19px 28px;border:2px solid var(--ink);transition:transform .12s,box-shadow .12s,background .12s,color .12s}
+  .btn-red{background:var(--red);color:#fff;box-shadow:6px 6px 0 var(--ink)}
+  .btn-red:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+  .btn-ghost{background:#fff;color:var(--ink);box-shadow:6px 6px 0 var(--red)}
+  .btn-ghost:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--red)}
+  .stripes{background-image:repeating-linear-gradient(-45deg,var(--ink) 0,var(--ink) 1px,transparent 1px,transparent 7px)}
+  .stripes-red{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.9) 0,rgba(255,255,255,.9) 1px,transparent 1px,transparent 7px)}
+  .marginalia{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.55;writing-mode:vertical-rl;text-orientation:mixed}
+  /* ticker */
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ticker{overflow:hidden;background:var(--ink);color:#fff;border-bottom:2px solid var(--ink)}
+  .ticker .track{display:flex;width:max-content;white-space:nowrap;animation:tick 40s linear infinite;font-family:var(--mono);font-size:11.5px;letter-spacing:.25em;text-transform:uppercase;padding:9px 0}
+  .ticker .track span{padding:0 18px}
+  .ticker .track .r{color:var(--red)}
+  /* topbar */
+  .topbar{border-bottom:2px solid var(--ink);background:#fff}
+  .topbar .in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+  .topbar .brand{font-family:var(--head);font-size:15px;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:12px}
+  .topbar .brand .sq{width:14px;height:14px;background:var(--red);flex:0 0 auto}
+  .topbar .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .lang{display:inline-flex;border:2px solid var(--ink)}
+  .lang span,.lang a{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;padding:5px 12px;text-decoration:none}
+  .lang .on{background:var(--ink);color:#fff}
+  .partner-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--red);color:#fff;padding:6px 12px;white-space:normal}
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);gap:2px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--red)}
+  .metric{background:#fff;padding:30px 26px;display:flex;flex-direction:column;gap:8px}
+  .metric .v{font-family:var(--head);font-size:clamp(22px,2.4vw,34px);line-height:1;text-transform:uppercase}
+  .metric .v .r{color:var(--red)}
+  .metric .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+  /* services */
+  .svc{border:2px solid var(--ink);margin-bottom:26px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);background:#fff}
+  .svc:last-child{margin-bottom:0}
+  .svc .left{padding:34px 32px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:16px}
+  .svc .right{padding:34px 32px;display:flex;flex-direction:column;gap:16px}
+  .svc .numrow{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .svc .num{font-family:var(--mono);font-weight:700;font-size:30px;color:var(--red);line-height:1}
+  .svc .cat{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;border:2px solid var(--ink);padding:5px 10px 4px}
+  .svc h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.2vw,30px);line-height:1.05;margin:0}
+  .svc .who{font-size:15px;line-height:1.6;margin:0}
+  .svc .who b,.svc .res b{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:6px}
+  .svc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  .svc li{display:flex;gap:14px;padding:11px 0;border-bottom:2px solid #eee;font-size:15px;line-height:1.55}
+  .svc li:last-child{border-bottom:0}
+  .svc li .a{font-family:var(--mono);font-weight:700;color:var(--red);flex:0 0 auto}
+  .svc .res{margin:0;border-top:2px solid var(--ink);padding-top:16px;font-size:15px;line-height:1.6}
+  .svc--flag{background:var(--ink);color:#fff}
+  .svc--flag .left{border-right-color:#fff}
+  .svc--flag h3{color:#fff}
+  .svc--flag .cat{border-color:#fff;background:var(--red);color:#fff}
+  .svc--flag li{border-bottom-color:#333}
+  .svc--flag .res{border-top-color:#fff}
+  /* automate tiles */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--ink);background:var(--ink);gap:2px;box-shadow:8px 8px 0 var(--ink)}
+  .tile{background:#fff;padding:30px 26px;display:flex;flex-direction:column;gap:14px;transition:background .15s,color .15s}
+  .tile .n{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--red)}
+  .tile h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:19px;line-height:1.1;margin:0}
+  .tile p{margin:0;font-size:14px;line-height:1.6}
+  .tile:hover{background:var(--ink);color:#fff}
+  .tile:hover h3{color:#fff}
+  /* timeline */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative}
+  .step{border:2px solid var(--ink);background:#fff;padding:28px 24px;display:flex;flex-direction:column;gap:14px;position:relative;box-shadow:6px 6px 0 var(--ink)}
+  .step .sn{font-family:var(--head);font-size:52px;line-height:1;color:#fff;-webkit-text-stroke:2px var(--ink)}
+  .step:last-child .sn{color:var(--red);-webkit-text-stroke:2px var(--red)}
+  .step .sl{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red)}
+  .step h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:18px;line-height:1.15;margin:0}
+  .step p{margin:0;font-size:14px;line-height:1.6}
+  /* pricing */
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:2px solid var(--ink);background:var(--ink);gap:2px;box-shadow:10px 10px 0 var(--red)}
+  .price{background:#fff;padding:30px 24px;display:flex;flex-direction:column;gap:12px}
+  .price .pl{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
+  .price .pv{font-family:var(--mono);font-weight:700;font-size:clamp(28px,2.6vw,38px);line-height:1;letter-spacing:-.02em}
+  .price .pv small{font-size:14px;font-weight:700}
+  .price .pm{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--red);font-weight:700}
+  .price p{margin:0;font-size:13.5px;line-height:1.55;border-top:2px solid #eee;padding-top:12px}
+  .price--flag{background:var(--ink);color:#fff}
+  .price--flag .pv{color:#fff}
+  .price--flag p{border-top-color:#333}
+  /* team */
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .person{border:2px solid var(--ink);background:#fff;display:grid;grid-template-columns:minmax(180px,220px) 1fr;box-shadow:8px 8px 0 var(--ink)}
+  .person .photo{border-right:2px solid var(--ink);aspect-ratio:4/5;position:relative;background:#f2f2f2;overflow:hidden}
+  .person .photo img{display:block;width:100%;height:100%;object-fit:cover}
+  .person .photo.mono{background:var(--red);display:flex;align-items:center;justify-content:center}
+  .person .photo.mono span{font-family:var(--head);font-size:clamp(48px,7vw,72px);color:#fff;letter-spacing:.02em}
+  .person .info{padding:28px 26px;display:flex;flex-direction:column;gap:12px}
+  .person .role{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+  .person h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:24px;line-height:1.05;margin:0}
+  .person p{margin:0;font-size:14px;line-height:1.6}
+  /* final cta */
+  .final{background:var(--red);color:#fff;border-bottom:2px solid var(--ink)}
+  .final .in{padding-top:clamp(72px,8vw,120px);padding-bottom:clamp(72px,8vw,120px);position:relative}
+  .final h2{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(34px,5.4vw,72px);line-height:.98;margin:0 0 22px;color:#fff;max-width:16ch}
+  .final p{margin:0 0 40px;font-size:clamp(16px,1.5vw,20px);line-height:1.55;max-width:52ch}
+  .btn-ink{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:6px 6px 0 #fff}
+  .btn-ink:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #fff}
+  .btn-white{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
+  .btn-white:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+  footer{background:#fff}
+  footer .in{padding-top:34px;padding-bottom:34px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+  footer a{text-decoration:none;border-bottom:2px solid var(--red)}
+  .sidewrap{position:relative}
+  .side-l{position:absolute;left:-2px;top:0;bottom:0;display:flex;align-items:center}
+  @media (max-width:1320px){.marginalia{display:none}}
+  @media (max-width:980px){
+    .metrics{grid-template-columns:1fr 1fr}
+    .tiles{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .svc{grid-template-columns:1fr}
+    .svc .left{border-right:0;border-bottom:2px solid var(--ink)}
+    .svc--flag .left{border-bottom-color:#fff}
+    .team{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    .metrics,.tiles,.steps{grid-template-columns:1fr}
+    .herosplit{grid-template-columns:1fr !important}
+    .person{grid-template-columns:1fr}
+    .person .photo{border-right:0;border-bottom:2px solid var(--ink);max-width:100%}
+    .prices{box-shadow:6px 6px 0 var(--red)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" data-screen-label="Ticker">
+  <div class="track" aria-hidden="true">
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+    <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span><span class="r">■</span>
+    <span>ЗИНИН И ПАРТНЁРЫ</span><span class="r">■</span>
+  </div>
+</div>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar" data-screen-label="Topbar">
+  <div class="wrap in">
+    <a class="brand" href="#top"><span class="sq"></span>ЗИНИН И ПАРТНЁРЫ</a>
+    <span class="partner-badge">ZININ.AI × САРАПУЛОВ</span>
+    <div class="meta">
+      <span>ИИ-ПРАКТИКА · РОССИЯ И СНГ · 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1 HERO ===== -->
+<section id="top" data-screen-label="Hero">
+  <div class="wrap sec" style="position:relative">
+    <div class="tag"><b>01</b><span>·</span><span class="sp">ПАРТНЁРСТВО</span><span class="rule"></span><span style="letter-spacing:.2em;opacity:.6">РОССИЯ И СНГ · КОРПОРАТИВНЫЕ КОМАНДЫ</span></div>
+    <h1 class="h" style="font-size:clamp(30px,6vw,80px);line-height:.98;margin:0 0 34px">ИИ-грамотность<br>для предпринимателей</h1>
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:start" class="herosplit">
+      <div>
+        <p style="margin:0 0 16px;font-size:clamp(19px,2vw,26px);line-height:1.35;font-weight:600;max-width:34ch">Обучаем вас и команду работать с ИИ и собираем ИИ-агентов под ключ — для бизнеса в России и СНГ.</p>
+        <p style="margin:0 0 38px;font-size:clamp(15px,1.4vw,18px);line-height:1.6;max-width:52ch">Пять форматов: от личного обучения фаундера до агента, который берёт на себя работу целого отдела. Работаем с командами банков, ИТ, финтеха, девелоперов и сервисных компаний. Начинаем с бесплатного разбора процессов.</p>
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <a class="btn btn-red" href="https://calendly.com/timzinin" target="_blank" rel="noopener">Расскажите о задаче — разберём бесплатно →</a>
+          <a class="btn btn-ghost" href="#pricing">Смотрите форматы и цены</a>
+        </div>
+      </div>
+      <div style="border:2px solid var(--ink);min-height:220px;position:relative;overflow:hidden" aria-hidden="true">
+        <img src="assets/network.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;top:-2px;right:-2px;background:var(--red);color:#fff;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;padding:7px 12px;border:2px solid var(--ink)">RU · 2026</span>
+        <span style="position:absolute;left:12px;bottom:10px;background:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--ink)">СЕТЬ ПАРТНЁРОВ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 METRICS ===== -->
+<section data-screen-label="Metrics">
+  <div class="wrap" style="padding-top:56px;padding-bottom:64px">
+    <div class="metrics">
+      <div class="metric"><span class="v">Anthropic</span><span class="k">Сертифицированный инженер</span></div>
+      <div class="metric"><span class="v"><span class="r">36</span></span><span class="k">Фаундеров обучено</span></div>
+      <div class="metric"><span class="v">5 форматов</span><span class="k">От обучения до агента</span></div>
+      <div class="metric"><span class="v">3 страны</span><span class="k">Сеть партнёров</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 SERVICES ===== -->
+<section id="services" data-screen-label="What we do">
+  <div class="wrap sec">
+    <div class="tag"><b>02</b><span>·</span><span class="sp">ПЯТЬ ФОРМАТОВ РАБОТЫ</span><span class="rule"></span></div>
+    <h2 class="h">Что делаем</h2>
+    <p class="lede">Каждый формат идёт от вашей реальной задачи и заканчивается работающим результатом, который остаётся у вас. Ниже — что входит в каждый и что вы получаете на выходе.</p>
+
+    <!-- 01 -->
+    <article class="svc">
+      <div class="left">
+        <div class="numrow"><span class="num">01</span><span class="cat">Обучение</span></div>
+        <h3>Обучение фаундера</h3>
+        <p class="who"><b>Для кого</b>первое лицо компании, кто хочет освоить ИИ лично и задать стандарт для команды.</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><span class="a">→</span>Разбираем ваши задачи и подбираем инструменты под них</li>
+          <li><span class="a">→</span>4 личных занятия один на один, в вашем темпе</li>
+          <li><span class="a">→</span>Готовые сценарии и шаблоны под вашу работу</li>
+          <li><span class="a">→</span>Поддержка в переписке между занятиями и после программы</li>
+        </ul>
+        <p class="res"><b>Результат</b>вы сами ведёте работу с ИИ и понимаете, куда ставить его первым.</p>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="svc">
+      <div class="left">
+        <div class="numrow"><span class="num">02</span><span class="cat">Обучение</span></div>
+        <h3>Обучение команды</h3>
+        <p class="who"><b>Для кого</b>руководитель, кто хочет поднять на ИИ отдел или команду по единому стандарту.</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><span class="a">→</span>До 4 человек, до 4 занятий в месяц — комбинацию собираете под свой темп</li>
+          <li><span class="a">→</span>Программа под процессы вашего отдела</li>
+          <li><span class="a">→</span>Единые правила, промпты и шаблоны для всей команды</li>
+          <li><span class="a">→</span>Замер результата после внедрения</li>
+        </ul>
+        <p class="res"><b>Результат</b>команда работает с ИИ по единому стандарту, а навык остаётся внутри компании.</p>
+      </div>
+    </article>
+
+    <!-- 03 flagship -->
+    <article class="svc svc--flag">
+      <div class="left">
+        <div class="numrow"><span class="num">03</span><span class="cat">Формат-флагман</span></div>
+        <h3>Корпоративный хакатон</h3>
+        <p class="who"><b>Для кого</b>компания, кто хочет за два дня получить рабочие инструменты руками своей команды.</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><span class="a">→</span><span><b style="color:#fff">День первый — сборка.</b> Команда своими руками собирает ИИ-инструменты под реальные задачи.</span></li>
+          <li><span class="a">→</span><span><b style="color:#fff">День второй — доводка и защита.</b> Доводим инструменты до ума и защищаем перед руководством.</span></li>
+          <li><span class="a">→</span>Наши инженеры рядом оба дня</li>
+          <li><span class="a">→</span>Собранные инструменты остаются в работе компании</li>
+        </ul>
+        <p class="res"><b>Результат</b>несколько работающих инструментов и команда, которая умеет их собирать.</p>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="svc">
+      <div class="left">
+        <div class="numrow"><span class="num">04</span><span class="cat">Агенты</span></div>
+        <h3>Агент под ключ</h3>
+        <p class="who"><b>Для кого</b>бизнес, кто хочет отдать ИИ-агенту целый участок — продажи, поддержку или маркетинг.</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><span class="a">→</span><span><b>Продажи:</b> агент находит клиентов, ведёт первичную переписку, назначает встречи</span></li>
+          <li><span class="a">→</span><span><b>Поддержка:</b> агент отвечает клиентам круглосуточно, сложное передаёт людям</span></li>
+          <li><span class="a">→</span><span><b>Маркетинг:</b> агент готовит письма и контент, разбирает отклики</span></li>
+          <li><span class="a">→</span>Интеграция с вашими системами и CRM</li>
+        </ul>
+        <p class="res"><b>Результат</b>участок работает на ИИ, люди занимаются тем, что приносит деньги.</p>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="svc">
+      <div class="left">
+        <div class="numrow"><span class="num">05</span><span class="cat">Сопровождение</span></div>
+        <h3>Постоянное сопровождение</h3>
+        <p class="who"><b>Для кого</b>компания с запущенным ИИ-контуром, кто хочет развивать его дальше.</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><span class="a">→</span>Развитие ИИ-контура компании</li>
+          <li><span class="a">→</span>Новые агенты по мере роста задач</li>
+          <li><span class="a">→</span>Донастройка под изменения в процессах</li>
+          <li><span class="a">→</span>Обучение новых сотрудников</li>
+        </ul>
+        <p class="res"><b>Результат</b>ИИ-контур растёт вместе с бизнесом и остаётся в рабочем состоянии.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 4 AUTOMATE ===== -->
+<section data-screen-label="What we automate">
+  <div class="wrap sec">
+    <div class="tag"><b>03</b><span>·</span><span class="sp">АГЕНТЫ ПОД ПРОЦЕССЫ</span><span class="rule"></span></div>
+    <h2 class="h">Что автоматизируем</h2>
+    <p class="lede">Четыре участка, где ИИ-агенты забирают рутину быстрее всего. Под каждый собираем агента отдельно, под ваши инструменты и данные.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">01</span><h3>Отдел продаж</h3><p>Агент квалифицирует входящие обращения, ведёт первичную переписку, назначает встречи и готовит коммерческое предложение — быстрее и без потерь по воронке.</p></div>
+      <div class="tile"><span class="n">02</span><h3>Поддержка клиентов</h3><p>Агент отвечает на частые вопросы круглосуточно, ведёт клиента по базе знаний, а сложные случаи сразу передаёт живым сотрудникам.</p></div>
+      <div class="tile"><span class="n">03</span><h3>Внешние коммуникации и&nbsp;маркетинг</h3><p>Агент готовит персональные письма и контент в голосе компании, разбирает отклики и ведёт первый контакт — число касаний растёт в разы.</p></div>
+      <div class="tile"><span class="n">04</span><h3>Агент под задачу</h3><p>Документы, отчёты, закупки, внутренняя база знаний — под конкретный процесс собираем отдельного агента. Начинаем с разбора процесса.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 HOW ===== -->
+<section data-screen-label="How it works">
+  <div class="wrap sec">
+    <div class="tag"><b>04</b><span>·</span><span class="sp">ОТ ПЕРВОГО ЗВОНКА ДО РАБОТАЮЩЕГО КОНТУРА</span><span class="rule"></span></div>
+    <h2 class="h" style="margin-bottom:56px">Как проходит работа</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="sn">1</span>
+        <span class="sl">Шаг 1 · 30 мин · Бесплатно</span>
+        <h3>Бесплатный разбор</h3>
+        <p>Смотрим ваши процессы и находим участок, где ИИ даст результат быстрее всего. Это просто разговор, без обязательств.</p>
+      </div>
+      <div class="step">
+        <span class="sn">2</span>
+        <span class="sl">Шаг 2</span>
+        <h3>Выбираем формат</h3>
+        <p>Фиксируем задачи, сроки и формат: обучение, хакатон, агент под ключ или комбинация. Называем точную цену до старта.</p>
+      </div>
+      <div class="step">
+        <span class="sn">3</span>
+        <span class="sl">Шаг 3</span>
+        <h3>Занятия и сборка руками</h3>
+        <p>Собираем инструменты на ваших реальных процессах. Тим ведёт занятия и сборку, Семён Сарапулов сопровождает вас от первого разбора до запущенного результата.</p>
+      </div>
+      <div class="step">
+        <span class="sn">4</span>
+        <span class="sl">Шаг 4</span>
+        <h3>Рабочий контур остаётся у вас</h3>
+        <p>Отдаём работающие инструменты и навык внутрь команды. Дальше вы ведёте ИИ сами, а мы остаёмся на связи.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 PRICING ===== -->
+<section id="pricing" data-screen-label="Pricing">
+  <div class="wrap sec">
+    <div class="tag"><b>05</b><span>·</span><span class="sp">ЕДИНЫЙ ПРАЙС СЕТИ</span><span class="rule"></span></div>
+    <h2 class="h">Цены</h2>
+    <p class="lede">Цены фиксированные и одинаковые по всей сети «Зинин и Партнёры» — в любом регионе, у любого партнёра.</p>
+    <div class="prices">
+      <div class="price">
+        <span class="pl">Обучение фаундера</span>
+        <span class="pv">200 000 ₽</span>
+        <span class="pm">50 000 ₽ × 4 занятия</span>
+        <p>Персонально, один на один, в вашем темпе.</p>
+      </div>
+      <div class="price">
+        <span class="pl">Обучение команды</span>
+        <span class="pv">от 400 000 ₽<small>/мес</small></span>
+        <span class="pm">до 4 человек · до 4 занятий</span>
+        <p>Программа под процессы отдела, комбинация занятий под ваш темп.</p>
+      </div>
+      <div class="price price--flag">
+        <span class="pl" style="color:var(--red)">Корпоративный хакатон</span>
+        <span class="pv">~1 000 000 ₽</span>
+        <span class="pm">2 дня · формат-флагман</span>
+        <p>Команда своими руками делает рабочие ИИ-инструменты за два дня.</p>
+      </div>
+      <div class="price">
+        <span class="pl">Агент под ключ</span>
+        <span class="pv">от 90 000 ₽</span>
+        <span class="pm">продажи · поддержка · маркетинг</span>
+        <p>Финальная оценка — по процессам, после бесплатного разбора.</p>
+      </div>
+      <div class="price">
+        <span class="pl">Сопровождение</span>
+        <span class="pv">от 500 000 ₽<small>/мес</small></span>
+        <span class="pm">развитие ИИ-контура</span>
+        <p>Новые агенты, донастройка, обучение новых сотрудников.</p>
+      </div>
+    </div>
+    <p class="mono" style="font-size:12px;letter-spacing:.05em;opacity:.65;margin:24px 0 0">Оплата в рублях.</p>
+  </div>
+</section>
+
+<!-- ===== 7 TEAM ===== -->
+<section id="team" data-screen-label="Team">
+  <div class="wrap sec">
+    <div class="tag"><b>06</b><span>·</span><span class="sp">КОМАНДА</span><span class="rule"></span></div>
+    <h2 class="h" style="margin-bottom:56px">Кто ведёт</h2>
+    <div class="team">
+      <article class="person">
+        <div class="photo">
+          <img src="assets/tim.jpg" alt="Тим Зинин" style="filter:grayscale(1) contrast(1.08);object-position:center 25%">
+        </div>
+        <div class="info">
+          <span class="role">Основатель · ИИ-инженер</span>
+          <h3>Тим Зинин</h3>
+          <p>Основатель Zinin.ai, сертифицированный инженер Anthropic. Строит ИИ-инструменты для бизнеса и пишет код сам.</p>
+          <p>Ведёт методику и техническую глубину: от первого агента в команде до целого ИИ-контура компании. Лично обучил десятки фаундеров.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="photo mono"><span>С</span></div>
+        <div class="info">
+          <span class="role">Партнёр · Россия</span>
+          <h3>Семён Сарапулов</h3>
+          <p>Представитель сети «Зинин и Партнёры» в России. Приводит компании в практику и ведёт клиента от первого разбора до запущенного результата.</p>
+          <p>Помогает бизнесу выбрать формат под задачу — обучение, хакатон или агента под ключ — и остаётся на связи на всём пути внедрения.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8 FINAL CTA ===== -->
+<section class="final" data-screen-label="Final CTA">
+  <div class="wrap in" style="position:relative">
+    <div class="stripes-red" style="position:absolute;top:0;right:24px;width:180px;height:100%;opacity:.35;pointer-events:none" aria-hidden="true"></div>
+    <h2>Начните с бесплатного разбора</h2>
+    <p>Созвонимся на 30 минут, разберём два-три ваших процесса и предложим формат. Это просто разговор, без обязательств.</p>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;position:relative">
+      <a class="btn btn-ink" href="https://calendly.com/timzinin" target="_blank" rel="noopener">Выберите время в Calendly →</a>
+      <a class="btn btn-white" href="https://t.me/timzinin" target="_blank" rel="noopener">Напишите в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer data-screen-label="Footer">
+  <div class="wrap in">
+    <span>Семён Сарапулов — партнёр сети Zinin.ai · Россия</span>
+    <span style="display:flex;gap:26px;flex-wrap:wrap">
+      <a href="https://zinin.ai" target="_blank" rel="noopener">zinin.ai</a>
+      <a href="https://zinin-shturbin.com" target="_blank" rel="noopener">zinin-shturbin.com</a>
+      <span style="opacity:.6">сеть регионов RU · BY · TR</span>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
