@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--ink:#0A0A0A;--red:#E10A17;--paper:#fff}
+  html,body{width:1080px;height:1080px;overflow:hidden}
+  body{background:var(--paper);font-family:'Space Grotesk',sans-serif;color:var(--ink);position:relative}
+  .stripe{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,var(--red) 0,var(--red) 2px,transparent 2px,transparent 14px);opacity:.07}
+  .frame{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 90px}
+  .kick{font-family:'Space Mono',monospace;font-size:26px;letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:16px;margin-bottom:34px}
+  .kick b{color:var(--red)}
+  .photo{width:240px;height:240px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 8px var(--red);
+    background:#eee center/cover no-repeat;filter:grayscale(1) contrast(1.05);margin-bottom:38px}
+  .title{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:.96;letter-spacing:-.015em;font-size:88px;margin-bottom:34px}
+  .title .r{color:var(--red)}
+  .date{display:inline-block;background:var(--red);color:#fff;font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:38px;letter-spacing:.01em;padding:16px 30px;box-shadow:11px 11px 0 var(--ink);margin-bottom:44px}
+  .brand{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:34px;letter-spacing:.02em}
+  .brand span{color:var(--red)}
+  .meta{font-family:'Space Mono',monospace;font-size:20px;letter-spacing:.24em;text-transform:uppercase;margin-top:14px;color:#444}
+</style>
+</head>
+<body>
+  <div class="stripe"></div>
+  <div class="frame">
+    <div class="kick"><span>Онлайн-вебинар</span><b>· Бесплатно</b></div>
+    <div class="photo" style="background-image:url('tim.jpg')"></div>
+    <div class="title">ИИ —<br>ЭКЗО<span class="r">СКЕЛЕТ</span><br>ДЛЯ ФАУНДЕРА</div>
+    <div class="date">23 июля · 19:00 МСК</div>
+    <div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div>
+    <div class="meta">Zoom · регистрация в боте</div>
+  </div>
+</body>
+</html>
