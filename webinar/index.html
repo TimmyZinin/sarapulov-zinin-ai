@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ИИ — экзоскелет для фаундера · вебинар 23 июля · Зинин × Сарапулов</title>
+<meta name="description" content="Бесплатный онлайн-вебинар Тима Зинина и Семёна Сарапулова. 23 июля, 19:00 МСК, Zoom. Как один фаундер с ИИ делает работу целого отдела. Регистрация в Telegram-боте.">
+<meta property="og:title" content="ИИ — экзоскелет для фаундера · вебинар 23 июля">
+<meta property="og:description" content="Бесплатный онлайн-вебинар Тима Зинина и Семёна Сарапулова. 23 июля, 19:00 МСК, Zoom. Регистрация в Telegram-боте.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sarapulov.zinin.ai/webinar/">
+<meta property="og:image" content="https://sarapulov.zinin.ai/webinar/og-webinar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sarapulov.zinin.ai/webinar/og-webinar.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E10A17'/%3E%3Ctext x='16' y='23' font-family='Arial, Helvetica, sans-serif' font-size='20' font-weight='900' fill='%23ffffff' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0A0A0A;--red:#E10A17;--paper:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--red);color:#fff}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .h{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+  .mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.28em}
+  .ticker{overflow:hidden;background:var(--ink);color:#fff}
+  .ticker .track{display:flex;width:max-content;white-space:nowrap;animation:tick 34s linear infinite;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.25em;text-transform:uppercase;padding:9px 0}
+  .ticker .track span{padding:0 18px}.ticker .track .r{color:var(--red)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .hero{padding:54px 0 40px}
+  .kick{font-size:12px;display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .kick b{color:var(--red)}.kick .rule{flex:1;height:2px;background:var(--ink);max-width:120px}
+  h1.h{font-size:clamp(38px,7vw,74px);margin-bottom:22px}
+  h1.h .r{color:var(--red)}
+  .lede{font-size:clamp(17px,2vw,21px);max-width:60ch;margin-bottom:30px}
+  .afisha{width:100%;border:3px solid var(--ink);box-shadow:12px 12px 0 var(--red);display:block;margin:8px 0 40px}
+  .facts{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+  .fact{border:2px solid var(--ink);padding:14px 20px;font-family:'Space Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:.08em}
+  .fact b{color:var(--red)}
+  .learn{border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:40px 0;margin-bottom:44px}
+  .learn h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(22px,3vw,30px);margin-bottom:24px}
+  .learn ul{list-style:none;display:grid;gap:18px}
+  .learn li{display:flex;gap:16px;font-size:17px;align-items:flex-start}
+  .learn li .n{font-family:'Archivo Black',sans-serif;color:var(--red);font-size:22px;line-height:1.1;flex:0 0 auto}
+  .cta{text-align:center;padding:10px 0 70px}
+  .cta .big{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(24px,3.4vw,34px);margin-bottom:26px;line-height:1.05}
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:19px;letter-spacing:.02em;text-decoration:none;padding:22px 40px;border:3px solid var(--ink);background:var(--red);color:#fff;box-shadow:8px 8px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 var(--ink)}
+  .sub{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;color:#555;margin-top:20px}
+  footer{border-top:2px solid var(--ink);padding:26px 0;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--red);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="ticker"><div class="track">
+  <span class="r">● ВЕБИНАР 23 ИЮЛЯ</span><span>ИИ — ЭКЗОСКЕЛЕТ ДЛЯ ФАУНДЕРА</span><span class="r">● ZOOM · БЕСПЛАТНО</span><span>ЗИНИН × САРАПУЛОВ</span>
+  <span class="r">● ВЕБИНАР 23 ИЮЛЯ</span><span>ИИ — ЭКЗОСКЕЛЕТ ДЛЯ ФАУНДЕРА</span><span class="r">● ZOOM · БЕСПЛАТНО</span><span>ЗИНИН × САРАПУЛОВ</span>
+</div></div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="kick mono"><span>Онлайн-вебинар</span><span class="rule"></span><b>Бесплатно</b></div>
+    <h1 class="h">ИИ — экзоскелет<br>для <span class="r">фаундера</span></h1>
+    <p class="lede">Как один основатель с ИИ делает работу целого отдела — продажи, контент, операционку — без раздувания штата. Разбираем на живых примерах, а не на слайдах.</p>
+    <img class="afisha" src="og-webinar.png" alt="ИИ — экзоскелет для фаундера, 23 июля 19:00 МСК">
+    <div class="facts">
+      <div class="fact"><b>23 июля</b> · 19:00 МСК</div>
+      <div class="fact">Формат: <b>Zoom</b></div>
+      <div class="fact">Цена: <b>0 ₽</b></div>
+      <div class="fact">Ведут: <b>Зинин × Сарапулов</b></div>
+    </div>
+  </section>
+
+  <section class="learn">
+    <h2>Что заберёте</h2>
+    <ul>
+      <li><span class="n">01</span><span>Какие задачи фаундера ИИ уже закрывает сегодня — и с чего начать, чтобы увидеть результат за неделю, а не «когда-нибудь».</span></li>
+      <li><span class="n">02</span><span>Как собрать своего первого рабочего агента: не игрушку после демо, а то, что реально крутится в проде каждый день.</span></li>
+      <li><span class="n">03</span><span>Где ИИ экономит деньги, а где сжигает — честно про границы, безопасность данных и типичные ошибки внедрения.</span></li>
+    </ul>
+  </section>
+
+  <section class="cta">
+    <div class="big">Записаться на вебинар</div>
+    <a class="btn" href="https://t.me/zinin_sarapulov_bot?start=webinar">→ Регистрация в Telegram</a>
+    <div class="sub">Нажмите «Записаться» в боте — пришлём ссылку на Zoom и напомним перед стартом.</div>
+  </section>
+</div>
+
+<footer class="wrap" style="max-width:960px">
+  <span>Зинин × Сарапулов · ИИ-практика</span>
+  <span><a href="https://sarapulov.zinin.ai/">sarapulov.zinin.ai</a></span>
+</footer>
+</body>
+</html>
