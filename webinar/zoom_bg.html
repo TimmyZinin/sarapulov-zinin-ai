@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--ink:#0A0A0A;--red:#E10A17;--paper:#fff}
+  html,body{width:1920px;height:1080px;overflow:hidden}
+  body{font-family:'Space Grotesk',sans-serif;position:relative;background:var(--paper)}
+  /* правая чистая зона под лицо */
+  .stripe{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,var(--red) 0,var(--red) 2px,transparent 2px,transparent 16px);opacity:.045}
+  /* левая контентная панель */
+  .panel{position:absolute;left:0;top:0;bottom:0;width:660px;background:var(--ink);
+    padding:90px 70px;display:flex;flex-direction:column;justify-content:space-between}
+  .panel:after{content:"";position:absolute;right:-7px;top:0;bottom:0;width:7px;background:var(--red)}
+  .brand{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:26px;letter-spacing:.02em;color:#fff}
+  .brand span{color:var(--red)}
+  .title{font-family:'Archivo Black',sans-serif;text-transform:uppercase;color:#fff;
+    line-height:.98;letter-spacing:-.015em;font-size:82px}
+  .title .r{color:var(--red)}
+  .kick{font-family:'Space Mono',monospace;font-size:19px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:22px}
+  .meta{font-family:'Space Mono',monospace;font-size:17px;letter-spacing:.18em;text-transform:uppercase;color:#8a8a8a;line-height:2}
+  .meta b{color:#fff;font-weight:400}
+  /* декоративный крупный вебинар-маркер в правой зоне, ненавязчиво сверху */
+  .corner{position:absolute;top:70px;right:80px;font-family:'Space Mono',monospace;font-size:18px;
+    letter-spacing:.2em;text-transform:uppercase;color:#b8b8b8}
+  .corner b{color:var(--red)}
+</style>
+</head>
+<body>
+  <div class="stripe"></div>
+  <div class="corner">Онлайн-вебинар · <b>19:00 МСК</b></div>
+  <div class="panel">
+    <div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div>
+    <div>
+      <div class="kick">ИИ для предпринимателя</div>
+      <div class="title">ИИ —<br>ЭКЗО<span class="r">СКЕЛЕТ</span><br>ДЛЯ ФАУНДЕРА</div>
+    </div>
+    <div class="meta"><b>Тим Зинин</b> · ИИ-инженер<br>zinin.ai</div>
+  </div>
+</body>
+</html>

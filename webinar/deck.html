@@ -1,0 +1,402 @@
+<meta charset="utf-8">
+<title>ИИ — экзоскелет для фаундера · Зинин × Сарапулов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A; --red:#E10A17; --paper:#FFFFFF; --paper2:#F7F7F7;
+    --line:#E5E5E5; --grey:#5B5B5B; --shadow:12px 12px 0 var(--ink);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DEDEDE;font-family:'Space Grotesk',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .slide{width:1280px;height:720px;background:var(--paper);position:relative;overflow:hidden;
+    margin:24px auto;padding:56px 66px;display:flex;flex-direction:column}
+  .stripe{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,var(--red) 0,var(--red) 2px,transparent 2px,transparent 15px);opacity:.05;pointer-events:none}
+  .mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--red)}
+  h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:.93;letter-spacing:-.02em;font-size:78px}
+  h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:.98;letter-spacing:-.015em;font-size:44px}
+  h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.15}
+  .r{color:var(--red)}
+  p{font-size:16.5px;line-height:1.55;color:var(--grey)}
+  .lead{font-size:20px;line-height:1.5;color:#2a2a2a}
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:auto;z-index:2}
+  .brand{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.02em}
+  .brand span{color:var(--red)}
+  .pagenum{font-family:'Space Mono',monospace;font-size:12px;color:var(--grey);letter-spacing:.1em}
+  .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+        border-top:2px solid var(--ink);padding-top:14px;z-index:2}
+  .foot span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+  .chip{display:inline-block;background:var(--ink);color:#fff;padding:9px 18px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .chip.red{background:var(--red)}
+  .redblock{display:inline-block;background:var(--red);color:#fff;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:19px;letter-spacing:.01em;padding:12px 22px;box-shadow:var(--shadow)}
+  .card{background:var(--paper);border:3px solid var(--ink);padding:22px;position:relative}
+  .card.soft{background:var(--paper2);border:2px solid var(--line)}
+  .card .num{font-family:'Space Mono',monospace;font-size:12px;color:var(--red);letter-spacing:.1em;margin-bottom:10px;font-weight:700}
+  .card h3{margin-bottom:7px}
+  .card p{font-size:14px;line-height:1.45}
+  .grid{display:grid;gap:16px;z-index:2}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .gimg{width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat}
+  ul{list-style:none}
+  .rowlist li{font-size:16px;color:#2a2a2a;line-height:1.4;padding:16px 0 16px 30px;position:relative;border-bottom:1px solid var(--line)}
+  .rowlist li:before{content:"";position:absolute;left:0;top:22px;width:14px;height:14px;background:var(--red)}
+  .rowlist li b{font-family:'Space Grotesk';font-weight:700;color:var(--ink)}
+  /* timeline */
+  .timeline{display:flex;align-items:stretch;gap:0;margin-top:38px;z-index:2}
+  .tl{flex:1;padding:22px 24px;border:2px solid var(--line);position:relative}
+  .tl.now{border-color:var(--red);background:#fff}
+  .tl .num{font-family:'Space Mono';font-size:11px;letter-spacing:.14em;color:var(--grey);font-weight:700}
+  .tl.now .num{color:var(--red)}
+  .tl h3{margin-top:8px;font-size:20px}
+  .tl p{margin-top:8px;font-size:13.5px}
+  .arrowc{display:flex;align-items:center;font-family:'Archivo Black';color:var(--red);font-size:30px;padding:0 8px}
+  /* pricelist */
+  .price-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:2px solid var(--line);z-index:2}
+  .price-row:last-child{border-bottom:none}
+  .price-row .l h3{font-size:20px}
+  .price-row .l p{font-size:13.5px;margin-top:3px}
+  .price-row .p{font-family:'Archivo Black';font-size:24px;white-space:nowrap;color:var(--ink)}
+  .price-row .p small{display:block;font-family:'Space Mono';font-size:11px;font-weight:400;color:var(--grey);letter-spacing:.04em;margin-top:3px;text-align:right}
+  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;margin-top:20px;z-index:2;flex:1}
+  .flow{display:flex;align-items:stretch;gap:0;margin-top:34px;z-index:2}
+  .fl{flex:1;padding:18px 18px;background:var(--paper2);border:2px solid var(--line);text-align:center}
+  .fl .n{font-family:'Space Mono';font-size:11px;color:var(--red);font-weight:700;letter-spacing:.1em}
+  .fl h3{font-size:16px;margin-top:8px}
+  .fl p{font-size:12.5px;margin-top:6px;line-height:1.35}
+  .flarr{display:flex;align-items:center;color:var(--red);font-family:'Archivo Black';font-size:22px;padding:0 6px}
+  .shotwrap{position:relative;height:475px;z-index:2}
+  .shot{position:absolute;border:3px solid var(--ink);box-shadow:var(--shadow);background-size:cover;background-position:top center;background-repeat:no-repeat}
+  @page{size:1280px 720px;margin:0}
+  @media print{ body{background:#fff} .slide{margin:0;page-break-after:always;break-after:page} .slide:last-child{page-break-after:auto} }
+</style>
+
+<!-- 1. ТИТУЛ (с картинкой экзоскелета) -->
+<section class="slide" style="justify-content:center">
+  <div class="stripe"></div>
+  <div class="brand" style="position:absolute;top:56px;left:66px">ЗИНИН <span>×</span> САРАПУЛОВ</div>
+  <div class="mono" style="position:absolute;top:56px;right:66px">Онлайн-вебинар · 23 июля · 19:00 МСК</div>
+  <div style="display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;margin:auto 0;z-index:2">
+    <div>
+      <div class="chip red" style="margin-bottom:24px">ИИ для предпринимателя</div>
+      <h1>ИИ — ЭКЗО<span class="r">СКЕЛЕТ</span><br>ДЛЯ ФАУНДЕРА</h1>
+      <p class="lead" style="margin-top:26px;max-width:600px">
+        Как держать контроль над бизнесом, когда он растёт и тиражируется, —
+        а штат раздувать нельзя. Аппарат из ИИ-агентов вместо большой команды.
+      </p>
+    </div>
+    <div style="height:400px;border:3px solid var(--ink);box-shadow:var(--shadow)">
+      <div class="gimg" style="background-image:url('gen/hero_exo.png')"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Тим Зинин · ИИ-инженер</span><span>Сообщество Семёна Сарапулова</span></div>
+</section>
+
+<!-- 2. ПРОБЛЕМА (строки, не тройка) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">02</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Точка боли</div>
+    <h2 style="margin-top:12px;max-width:960px">ЧЕМ БОЛЬШЕ БИЗНЕС,<br>ТЕМ МЕНЬШЕ <span class="r">КОНТРОЛЯ</span></h2>
+    <ul class="rowlist" style="margin-top:26px;max-width:1050px">
+      <li><b>Каждая функция — это новый человек.</b> Найм, зарплата, обучение, контроль. Расходы растут быстрее выручки.</li>
+      <li><b>На местах всё по-своему.</b> Чем больше точек и менеджеров, тем сильнее гуляет стандарт. О проблемах вы узнаёте последним.</li>
+      <li><b>Всё держится на вас.</b> Пока фаундер лично тянет процессы, бизнес упирается в его сутки. Масштаб встаёт на потолке одного человека.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>Проблема контроля при масштабировании</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 3. ТРИ ЭПОХИ (таймлайн) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">03</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Как менялась работа с ИИ за год</div>
+    <h2 style="margin-top:12px">ОТ НАЙМА ЛЮДЕЙ<br>К <span class="r">АППАРАТУ</span></h2>
+    <div class="timeline">
+      <div class="tl"><div class="num">БЫЛО</div><h3>Нанимать людей</h3><p>На каждую задачу — отдельный сотрудник. Медленно, дорого, упирается в найм.</p></div>
+      <div class="arrowc">→</div>
+      <div class="tl"><div class="num">ВЧЕРА</div><h3>Армия «миньонов»</h3><p>Много мелких ИИ-помощников, каждого дёргаешь вручную. Быстрее, но контролировать поштучно тяжело.</p></div>
+      <div class="arrowc">→</div>
+      <div class="tl now"><div class="num">СЕЙЧАС</div><h3>Аппарат-экзоскелет</h3><p>Система агентов усиливает одного фаундера до масштаба отдела. Вы управляете, а не исполняете.</p></div>
+    </div>
+    <p class="lead" style="margin-top:28px;max-width:940px">Экзоскелет — это не замена вам. Это усиление: одна голова получает руки целого отдела.</p>
+  </div>
+  <div class="foot"><span>Люди → миньоны → аппарат</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 4. КАК РАБОТАЮТ АГЕНТЫ СЕЙЧАС (split + картинка) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">04</div></div>
+  <div class="split">
+    <div>
+      <div class="mono">Что такое агент сегодня</div>
+      <h2 style="margin-top:12px">АГЕНТ РАБОТАЕТ<br><span class="r">САМ</span></h2>
+      <ul class="rowlist" style="margin-top:20px">
+        <li><b>Берёт задачу целиком.</b> Не отвечает на один вопрос — доводит дело до результата: находит, пишет, оформляет, заносит в систему.</li>
+        <li><b>Работает круглосуточно.</b> Без выходных, обеда и «перезвоните завтра». Клиент получает ответ за секунды в любое время.</li>
+        <li><b>Сам решает шаги.</b> Разбивает задачу, идёт по порядку, а на сложном или деликатном — передаёт живому человеку.</li>
+      </ul>
+    </div>
+    <div style="height:440px;border:3px solid var(--ink);box-shadow:var(--shadow)">
+      <div class="gimg" style="background-image:url('gen/autonomous_agent.png')"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Агент = автономный исполнитель, а не подсказка</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 5. ТИПЫ АГЕНТОВ (сетка 6) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">05</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="mono">Какие агенты работают уже сегодня</div>
+    <h2 style="margin-top:12px">ШЕСТЬ РАБОЧИХ <span class="r">АГЕНТОВ</span></h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card soft"><div class="num">01</div><h3>Секретарь на входящих</h3><p style="margin-top:8px">Встречает каждое обращение в WhatsApp и Telegram, отвечает мгновенно, квалифицирует и назначает.</p></div>
+      <div class="card soft"><div class="num">02</div><h3>Продажник</h3><p style="margin-top:8px">Ведёт первичную переписку, прогревает, доводит клиента до встречи и записи на разбор.</p></div>
+      <div class="card soft"><div class="num">03</div><h3>Поддержка</h3><p style="margin-top:8px">Отвечает клиентам 24/7, закрывает типовые вопросы, сложное передаёт живому сотруднику.</p></div>
+      <div class="card soft"><div class="num">04</div><h3>Контент-агент</h3><p style="margin-top:8px">Готовит посты, письма и материалы по вашему тону — один за другим, потоком.</p></div>
+      <div class="card soft"><div class="num">05</div><h3>Аналитик</h3><p style="margin-top:8px">Собирает данные, сводит отчёты, показывает картину по бизнесу без ручного труда.</p></div>
+      <div class="card soft"><div class="num">06</div><h3>Документы и рутина</h3><p style="margin-top:8px">Готовит расчёты, договоры, закупки — собираем под конкретную задачу компании.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Агенты работают на реальных участках бизнеса</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 6. АППАРАТ (схема + картинка сети) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">06</div></div>
+  <div class="split">
+    <div>
+      <div class="mono">Что такое аппарат</div>
+      <h2 style="margin-top:12px">СИСТЕМА СЛУЖБ,<br>КОТОРАЯ РАБОТАЕТ <span class="r">НА ВАС</span></h2>
+      <p class="lead" style="margin-top:20px">Отдельные агенты собираются в службы под каждый участок: продажи, поддержка, контент, документы, аналитика.</p>
+      <p style="margin-top:14px;font-size:16px">Вы ставите задачу и видите результат — рутину служба тянет сама. Как государственный аппарат, только внутри вашего бизнеса, и во главе — вы.</p>
+    </div>
+    <div style="height:440px;border:3px solid var(--ink);box-shadow:var(--shadow)">
+      <div class="gimg" style="background-image:url('gen/network_apparat.png')"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Аппарат = службы + агенты под каждый участок</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 7. СЛОВАРЬ (4 карточки) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">07</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="mono">Словарь предпринимателя · 4 слова</div>
+    <h2 style="margin-top:12px">ИЗ ЧЕГО СОБРАН <span class="r">АППАРАТ</span></h2>
+    <div class="grid g4" style="margin-top:26px">
+      <div class="card"><div class="num">СКИЛЛ</div><h3>Записанный стандарт</h3><p style="margin-top:8px">Навык, который выполняется одинаково каждый раз: «отвечай по нашему тону», «квалифицируй заявку так». Ваш регламент внутри ИИ.</p></div>
+      <div class="card"><div class="num">АГЕНТ</div><h3>Исполнитель под ключ</h3><p style="margin-top:8px">Берёт задачу целиком и доводит до результата: находит, пишет, заносит в CRM, назначает встречу. Не подсказка — исполнение.</p></div>
+      <div class="card"><div class="num">СУБАГЕНТ</div><h3>Помощник агента</h3><p style="margin-top:8px">Агент запускает под себя других под куски работы: один собирает данные, второй проверяет, третий оформляет. Параллельно.</p></div>
+      <div class="card" style="border-color:var(--red)"><div class="num" style="color:var(--red)">АГЕНТСКИЙ МЕНЕДЖМЕНТ</div><h3>Ваша новая роль</h3><p style="margin-top:8px">Вы управляете не людьми, а агентами: ставите задачу, проверяете, поправляете, масштабируете. Дирижёр, а не исполнитель.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Скилл · Агент · Субагент · Агентский менеджмент</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 8. АВТОНОМНАЯ РАБОТА (флоу) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">08</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Как аппарат работает без вас за плечом</div>
+    <h2 style="margin-top:12px">АВТОНОМНЫЙ <span class="r">ЦИКЛ</span></h2>
+    <div class="flow">
+      <div class="fl"><div class="n">01</div><h3>Получил задачу</h3><p>Пришло обращение или сработало правило — агент берёт задачу в работу сам.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">02</div><h3>Сделал</h3><p>Проходит шаги, при нужде запускает субагентов на параллельные куски.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">03</div><h3>Проверил</h3><p>Сверяет результат со стандартом-скиллом, исправляет сам до нужного качества.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">04</div><h3>Отчитался</h3><p>Заносит в CRM, уведомляет вас, а спорное отдаёт живому человеку.</p></div>
+    </div>
+    <p class="lead" style="margin-top:30px;max-width:960px">Вы не сидите над каждым шагом. Вы задаёте правила и границы — а дальше смотрите результат и поправляете курс.</p>
+  </div>
+  <div class="foot"><span>Получил → сделал → проверил → отчитался</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 9. КОНТРОЛЬ (2-кол, не тройка) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">09</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Главный вопрос собственника</div>
+    <h2 style="margin-top:12px;max-width:1000px">«А Я БУДУ ЭТО <span class="r">КОНТРОЛИРОВАТЬ?</span>»</h2>
+    <div class="grid g2" style="margin-top:26px;max-width:1080px">
+      <div class="card"><div class="num">ВИДИМОСТЬ</div><h3>Всё в одной панели</h3><p style="margin-top:8px">Каждый лид, переписка и результат агента видны в реальном времени. Вы смотрите поток, а не собираете отчёты по кусочкам.</p></div>
+      <div class="card"><div class="num">СТАНДАРТ</div><h3>Одно правило на всех</h3><p style="margin-top:8px">Скилл задаёт единый тон и качество. Меняете правило один раз — оно применяется во всех точках и у всех агентов сразу.</p></div>
+    </div>
+    <p class="lead" style="margin-top:26px;max-width:980px">Плюс границы: агент знает, что можно, а спорное и деликатное отдаёт вам. Контроль не теряется — он усиливается: вы видите больше, чем видели с живой командой.</p>
+  </div>
+  <div class="foot"><span>Контроль = видимость + стандарт + границы</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 10. КЕЙСЫ (вертикальные строки) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">10</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="mono">Из практики · без названий компаний</div>
+    <h2 style="margin-top:12px">ГДЕ УЖЕ <span class="r">РАБОТАЕТ</span></h2>
+    <ul class="rowlist" style="margin-top:22px;max-width:1080px">
+      <li><b>Лизинг.</b> Входящие заявки на технику и авто. Агент квалифицирует клиента, проверяет документы, готовит расчёт и передаёт менеджеру готовую сделку — менеджер закрывает, а не разбирает поток.</li>
+      <li><b>Недвижимость.</b> Обращения в WhatsApp и Telegram круглосуточно. Агент отвечает за секунды, уточняет бюджет и район, назначает показ и заносит контакт в CRM — ни один лид не теряется ночью.</li>
+      <li><b>Услуги и продажи.</b> Первичная переписка, прогрев и запись на разбор. Агент ведёт клиента до встречи и снимает с менеджеров рутину — больше касаний без роста штата.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>Реальные участки, где агенты работают уже сегодня</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 11. ФРАНШИЗА (целевой, 2-кол) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">11</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="chip red" style="margin-bottom:16px">Для сети и франшизы</div>
+    <h2 style="max-width:1020px">ОДИН СТАНДАРТ<br>НА <span class="r">ВСЕ ТОЧКИ</span></h2>
+    <div class="grid g2" style="margin-top:26px;max-width:1080px">
+      <div class="card"><div class="num">ПРОБЛЕМА ФРАНЧАЙЗЕРА</div><p style="margin-top:6px;font-size:14.5px">Франшиза — это продажа стандарта. Но на местах его соблюдают по-разному: тон, скорость, качество ответа гуляют от точки к точке. Надзирать за каждой вручную не выходит.</p></div>
+      <div class="card" style="border-color:var(--red)"><div class="num" style="color:var(--red)">РЕШЕНИЕ</div><p style="margin-top:6px;font-size:14.5px">Скилл-стандарт зашивает единый тон, скрипт и качество во всех точках сразу. Агент в пакете франшизы работает одинаково в каждой — а франчайзер видит всё централизованно.</p></div>
+    </div>
+    <p class="lead" style="margin-top:24px;max-width:1000px">ИИ-аппарат в пакете франшизы поднимает ценность самой франшизы: франчайзи получает готовый инструмент, франчайзер — контроль качества без армии проверяющих.</p>
+  </div>
+  <div class="foot"><span>Франшиза = тиражирование стандарта. ИИ тиражирует его точно</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 12. ПРОФИТ / РЕЗУЛЬТАТ В ДЕНЬГАХ -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">12</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="mono">Где профит · в деньгах</div>
+    <h2 style="margin-top:12px">ОТДЕЛ ЛЮДЕЙ ПРОТИВ <span class="r">АППАРАТА</span></h2>
+    <div class="grid g2" style="margin-top:24px;max-width:1130px">
+      <div class="card soft">
+        <div class="num" style="color:var(--grey)">ЖИВОЙ ОТДЕЛ ПРОДАЖ · ПРИМЕР</div>
+        <h3 style="font-size:30px">~$6 000+ <span style="font-size:15px;color:var(--grey);font-weight:400">/ месяц</span></h3>
+        <ul class="rowlist" style="margin-top:10px">
+          <li style="padding:9px 0 9px 26px;font-size:14.5px">3 менеджера и руководитель: зарплаты, налоги, найм, текучка, управление</li>
+          <li style="padding:9px 0 9px 26px;border-bottom:none;font-size:14.5px">Работает 8 часов — часть лидов теряется ночью и в выходные</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--red)">
+        <div class="num" style="color:var(--red)">АГЕНТ-АППАРАТ</div>
+        <h3 style="font-size:30px">от ~$1 000 <span style="font-size:15px;color:var(--grey);font-weight:400">/ месяц</span></h3>
+        <ul class="rowlist" style="margin-top:10px">
+          <li style="padding:9px 0 9px 26px;font-size:14.5px">Агент продаж и секретарь на входящих, компьют и сопровождение</li>
+          <li style="padding:9px 0 9px 26px;border-bottom:none;font-size:14.5px">Работает 24/7, отвечает за секунды — ни один лид не теряется</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <span class="redblock" style="font-size:16px">Из практики: до −40% стоимости привлечения · до 3× воронка</span>
+      <span class="mono" style="color:var(--grey);text-transform:none;letter-spacing:.08em">точные цифры — на бесплатном разборе под ваш бизнес</span>
+    </div>
+  </div>
+  <div class="foot"><span>Профит = дешевле отдела и работает круглосуточно</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 13. ФОРМАТЫ И ЦЕНЫ (прайс из Belarus) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">13</div></div>
+  <div style="margin:24px 0 auto;z-index:2">
+    <div class="mono">Форматы работы · с чем приходят</div>
+    <h2 style="margin-top:12px">КАК МЫ <span class="r">РАБОТАЕМ</span></h2>
+    <div style="margin-top:20px;max-width:1120px">
+      <div class="price-row"><div class="l"><h3>Персональное обучение</h3><p>Фаундер или руководитель один на один осваивает ИИ под свои задачи</p></div><div class="p">$675<small>× 4 сессии · $2 700 за программу</small></div></div>
+      <div class="price-row"><div class="l"><h3>Обучение команды</h3><p>Программа под процессы отдела, единый стандарт для всех</p></div><div class="p">от $5 500<small>в месяц · группа до 8</small></div></div>
+      <div class="price-row"><div class="l"><h3>Корпоративный хакатон · 2 дня</h3><p>Команда своими руками собирает рабочие ИИ-инструменты</p></div><div class="p">~$11 000<small>за хакатон</small></div></div>
+      <div class="price-row"><div class="l"><h3>Агент под ключ</h3><p>Собираем ИИ-агента, который берёт на себя работу участка</p></div><div class="p">от $1 000<small>оценка — после разбора</small></div></div>
+      <div class="price-row"><div class="l"><h3>Сопровождение</h3><p>Развиваем аппарат после запуска: новые агенты, донастройка</p></div><div class="p">от $5 000<small>в месяц</small></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Финальная оценка — всегда после бесплатного разбора</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 14. ЧТО ДАЁТ (4) -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">14</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Что получает бизнес</div>
+    <h2 style="margin-top:12px">РЕЗУЛЬТАТ <span class="r">В ДЕЛЕ</span></h2>
+    <div class="grid g4" style="margin-top:30px">
+      <div class="card soft"><h3>Масштаб без раздувания штата</h3><p style="margin-top:9px">Больше клиентов и касаний — при той же команде.</p></div>
+      <div class="card soft"><h3>Скорость реакции</h3><p style="margin-top:9px">Ответ клиенту за секунды, круглосуточно.</p></div>
+      <div class="card soft"><h3>Единое качество</h3><p style="margin-top:9px">Один стандарт во всех точках и диалогах.</p></div>
+      <div class="card soft"><h3>Навык остаётся у вас</h3><p style="margin-top:9px">Аппарат работает внутри компании, а не у подрядчика.</p></div>
+    </div>
+    <p class="lead" style="margin-top:30px;max-width:980px">Роль фаундера меняется: меньше ручной работы, больше управления и стратегии. Вы дирижируете аппаратом.</p>
+  </div>
+  <div class="foot"><span>Масштаб · скорость · качество · собственность навыка</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 15. ПУБЛИКАЦИИ В МЕДИА / PRESSFEED -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">15</div></div>
+  <div style="margin:26px 0 auto;z-index:2">
+    <div class="mono">Отдельный агент · пиар без пиарщика</div>
+    <h2 style="margin-top:12px">ПУБЛИКАЦИИ В <span class="r">МЕДИА</span></h2>
+    <div class="flow">
+      <div class="fl"><div class="n">01</div><h3>Журналист ищет эксперта</h3><p>На сервисах журналистских запросов — Pressfeed и подобных.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">02</div><h3>Агент ловит запрос</h3><p>Мониторит запросы 24/7 и фильтрует те, что по вашей теме.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">03</div><h3>Готовит комментарий</h3><p>По вашей экспертизе и тону — за минуты, а не за день.</p></div>
+      <div class="flarr">→</div>
+      <div class="fl"><div class="n">04</div><h3>Вы в СМИ</h3><p>Публикация и упоминание бренда — без пиар-агентства и бюджета.</p></div>
+    </div>
+    <p class="lead" style="margin-top:30px;max-width:1000px">Экспертный статус, узнаваемость и доверие приходят как побочный продукт работы агента, а не как отдельная статья расходов на пиар.</p>
+  </div>
+  <div class="foot"><span>Медиа-присутствие на автопилоте через сервисы журналистских запросов</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 16. ПРЕСС-СЛУЖБА · СКРИНЫ-ДОКАЗАТЕЛЬСТВО -->
+<section class="slide">
+  <div class="stripe"></div>
+  <div class="head"><div class="brand">ЗИНИН <span>×</span> САРАПУЛОВ</div><div class="pagenum">16</div></div>
+  <div class="split" style="grid-template-columns:.9fr 1.1fr;gap:26px">
+    <div>
+      <div class="mono">Служба из моего аппарата · доказательство</div>
+      <h2 style="margin-top:12px">ПРЕСС-СЛУЖБА<br><span class="r">ИЗ АГЕНТОВ</span></h2>
+      <p class="lead" style="margin-top:16px">Агент отвечает на запросы журналистов от вашего имени, как эксперт, — и добывает публикации без пиар-бюджета.</p>
+      <ul class="rowlist" style="margin-top:14px">
+        <li style="padding:10px 0 10px 26px;font-size:15px"><b>За 2 недели:</b> MAXIM, Комсомольская правда, отраслевые издания</li>
+        <li style="padding:10px 0 10px 26px;border-bottom:none;font-size:15px">Всё автономно — агент сам ловит запрос и готовит ответ</li>
+      </ul>
+      <div style="margin-top:18px"><span class="redblock" style="font-size:15px">Это мой собственный аппарат в работе — не теория</span></div>
+    </div>
+    <div class="shotwrap">
+      <div class="shot" style="background-image:url('press/press_maxim.png');width:470px;height:264px;top:0;right:0"></div>
+      <div class="shot" style="background-image:url('press/press_kp.png');width:500px;height:281px;bottom:0;left:0;z-index:2"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Реальные публикации — пресс-агент на PR-платформах</span><span>Zinin.ai</span></div>
+</section>
+
+<!-- 17. CTA -->
+<section class="slide" style="justify-content:center">
+  <div class="stripe"></div>
+  <div class="brand" style="position:absolute;top:56px;left:66px">ЗИНИН <span>×</span> САРАПУЛОВ</div>
+  <div style="margin:auto 0;z-index:2;max-width:1000px">
+    <div class="mono">Зинин × Сарапулов</div>
+    <h1 style="font-size:104px;margin-top:16px">СПАСИБО<span class="r">.</span></h1>
+    <div style="margin-top:46px;display:flex;gap:52px;align-items:flex-end">
+      <div><div class="mono" style="color:var(--grey)">Записаться на практику</div><div style="font-family:'Archivo Black';font-size:24px;margin-top:6px">@zinin_sarapulov_bot</div></div>
+      <div><div class="mono" style="color:var(--grey)">Или напишите Семёну</div><div style="font-family:'Archivo Black';font-size:24px;margin-top:6px">@frguru</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Тим Зинин · Zinin.ai</span><span>ИИ — экзоскелет для фаундера</span></div>
+</section>
